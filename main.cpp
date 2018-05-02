@@ -7,6 +7,18 @@
 ** What does it do: 
 ** Demonstrates functionality and use of Menu class and validation 
 ** functions.
+** 
+** HOW TO RUN
+** You can use the provided makefile functions to compile and run
+** this program:
+**
+** make - compiles project and creates executable
+** make debug - compiles, creates executable, and runs program using
+**      Valgrind etc
+** make quickrun - like debug, but without Valgrind
+** make zip - will zip all files in directory with the specified 
+**      file extension (see makefile for details)
+** make clean - deletes *.o and the executable
 **
 *********************************************************************/
 
@@ -99,10 +111,10 @@ int main()
     // 1 - good
     int flagValid;
 
-    int flagExit = 0;
+    flagExit = 0;
     while (!flagExit)
     {
-        switch (valdiationMenu.run())
+        switch (validationMenu.run())
         {
             case 1:
                 flagExit = 1;
@@ -114,6 +126,9 @@ int main()
                     std::cout << "Enter an int (no range): ";
                     flagValid = getValidInput(&userInt);
                 } while(!flagValid);
+
+                std::cout << "***Valid entry: " << userInt << std::endl;
+
                 break;
             case 3:
                 do
@@ -121,6 +136,9 @@ int main()
                     std::cout << "Enter an int (range): ";
                     flagValid = getValidInput(&userInt, intMin, intMax);
                 } while(!flagValid);
+
+                std::cout << "***Valid entry: " << userInt << std::endl;
+
                 break;
             case 4:
                 // Slightly simplified by not using flagValid
@@ -128,24 +146,36 @@ int main()
                 {
                     std::cout << "Enter a double (no range): ";
                 } while(!getValidInput(&userDouble));
+
+                std::cout << "***Valid entry: " << userDouble << std::endl;
+                
                 break;
             case 5:
                 do
                 {
                     std::cout << "Enter a double (range): ";
                 } while(!getValidInput(&userDouble, dblMin, dblMax));
+
+                std::cout << "***Valid entry: " << userDouble << std::endl;
+
                 break;
             case 6:
                 do
                 {
                     std::cout << "Enter a string (no length range): ";
                 } while(!getValidInput(&userString));
+
+                std::cout << "***Valid entry: " << userString << std::endl;
+
                 break;
             case 7:
                 do
                 {
                     std::cout << "Enter a string (length range): ";
                 } while(!getValidInput(&userString, strMin, strMax));
+
+                std::cout << "***Valid entry: " << userString << std::endl;
+
                 break;
         }
 
