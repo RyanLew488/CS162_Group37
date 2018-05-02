@@ -8,7 +8,7 @@
 #
 # Project Name
 #
-PROJ = pred_prey_group_37
+PROJ = menu_valid_demo
 
 #
 # Compiler
@@ -19,7 +19,7 @@ $(CXX) = g++
 # Source Files
 #
 SRC  = main.cpp menu.cpp validation.cpp
-SRC += board.cpp critter.cpp ant.cpp doodlebug.cpp
+SRC += 
 
 #
 # Create an object for each source file
