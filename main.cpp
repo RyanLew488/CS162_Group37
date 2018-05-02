@@ -77,6 +77,11 @@ int main()
 
     std::cout << "\n\n\n\n=====VALIDATION DEMO BEGIN=====\n\n" << std::endl;
 
+    /*
+    // Validation functions use an overloaded function to make it easier
+    // to implement.
+    */
+
     // Menu to assist with validation demo
     Menu validationMenu("***DATA TYPES FOR VALIDATION***");
     validationMenu.add("Quit");
@@ -121,6 +126,8 @@ int main()
                 break;
             case 2:
                 // Loop until valid int provided
+                // first char is allowed to be + or -
+                // no '.' allowed
                 do
                 {
                     std::cout << "Enter an int (no range): ";
@@ -142,6 +149,8 @@ int main()
                 break;
             case 4:
                 // Slightly simplified by not using flagValid
+                // First char allowed to be + or -
+                // Only one '.' allowed
                 do
                 {
                     std::cout << "Enter a double (no range): ";
