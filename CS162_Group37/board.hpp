@@ -130,4 +130,6 @@ public:
     //      1 - given coords valid (inside board)
     int getSquareState(Critter**, int, int);
 
-}
+};
+
+#endif
