@@ -36,16 +36,16 @@ protected:
 
 public:
 
-	// constructor
-	Critter(int day);
+    // constructor
+    Critter(int day);
 
     // destructor
     virtual ~Critter();
 
     // getters
-	int get_dayBirth();
-	int get_species();
-	int get_dayLastBred();
+    int get_dayBirth();
+    int get_species();
+    int get_dayLastBred();
 
 
 	// setters
