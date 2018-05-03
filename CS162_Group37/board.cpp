@@ -121,7 +121,7 @@ void Board::printBoard()
 
 // Move all ants OR dbs on the board (see Board::ANT_ID/Board::DB_ID)
 // 
-// Critter::move(int* passCoords) will modify passCoords array
+// Critter::move(int* passCoords, int currentRow, int currentCol) will modify passCoords array
 //     according to critter's internal move logic
 //     passCoords MUST be inside of board
 // passCoords[0] = newRow
@@ -143,13 +143,17 @@ void Board::moveCritters(int speciesID)
 
             // if tempCritter->getSpecies() == speciesID
                 // get new coordinates of object
-                // tempCritter->move(newCoords);
+                // tempCritter->move(newCoords, oldRow, oldCol);
 
-                // moveTo(tempCritter, oldRow, oldCol, newCoords[0], newCoords[1]);
+
+                // Check that new coords != old coords
+                // if newCoords[0] != oldRow && newCoords[1] != oldCol
+                    // moveTo(tempCritter, oldRow, oldCol, newCoords[0], newCoords[1]);
 }
 
 
-
+// Moves a Critter to a new square, *replacing* whatever was there before.
+// Old coords will change to pointing to NULL
 void Board::moveTo(Critter* movingCritter, int oldRow, int oldCol, int newRow, int newCol)
 {
     // Critter* deadCritter;    // Critter occupying (newRow, newCol)
@@ -169,7 +173,7 @@ void Board::moveTo(Critter* movingCritter, int oldRow, int oldCol, int newRow, i
 
 // Breed eligible critters
 // Assumes only 2 possible species
-// Critter::breed(int* passCoords) acts analagous to Critter::move(int* passCoords)
+// Critter::breed(int* passCoords, int currentRow, int currentCol) acts analagous to Critter::move...
 //      will modify passCoords with (row, col) coords of new critter
 void Board::breedCritters(int speciesID)
 {
@@ -195,8 +199,11 @@ void Board::breedCritters(int speciesID)
             // if tempCritter->getSpecies() == speciesID
                 // check if eligible to breed
                 // if (tempCritter->getLastBreed() - getDayCounter() >= breedingPeriod)
-                    // tempCritter->breed(newCoords);
-                    // addCritter(speciesID, newCoords[0], newCoords[1]);
+                    // tempCritter->breed(newCoords, row, col);
+
+                    // Check that new coords != old coords
+                    // if newCoords[0] != row && newCoords[1] != col
+                        // addCritter(speciesID, newCoords[0], newCoords[1]);
 }
 
 
