@@ -50,58 +50,6 @@ Board::~Board()
     deleteBoardState();
 }
 
-// Deletes boardState by deleting all objects' memory, and then deleting
-// the array
-void Board::deleteBoardState()
-{
-    Critter* tempCritter;
-
-    // Iterate through rows
-    for (int row = 0; row < getSizeRow(); row++)
-    {
-        // Iterate through cols, deleting all objects in the row
-        for (int col = 0; col < getSizeCol(); col++)
-        {
-            // Point tempCritter to the object at (row, col)
-            getSquareState(&tempCritter, row, col);
-
-            delete tempCritter;
-            boardState[row][col] = NULL;
-        }
-
-        // Delete the row array
-        delete[] boardState[row];
-        boardState[row] = NULL;
-    }
-
-    // Delete the board array
-    delete[] boardState;
-    boardState = NULL;
-}
-
-// Creates the board array, using current sizes for row and col
-void Board::makeBoardState()
-{
-    rows = getSizeRow();
-    cols = getSizeCol();
-
-    // Make board state with right dimensions
-    boardState = new Critter**[rows];
-    for (int i = 0; i < rows; i++)
-    {
-        boardState[i] = new Critter*[cols];
-    }
-
-    // Initialize critter pointers to NULL
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < cols; j++)
-        {
-            boardState[i][j] = NULL;
-        }
-    }
-}
-
 // Used to run the predator-prey game
 void Board::runGame()
 {
@@ -126,6 +74,10 @@ void Board::runGame()
         }
     }
 }
+
+
+
+// *****======PRIVATE=====*****
 
 
 void Board::newGame()
@@ -227,7 +179,58 @@ int Board::getSquareState(Critter** critterHolder, int inRow, int inCol)
 }
 
 
-// *****======PRIVATE=====*****
+// Deletes boardState by deleting all objects' memory, and then deleting
+// the array
+void Board::deleteBoardState()
+{
+    Critter* tempCritter;
+
+    // Iterate through rows
+    for (int row = 0; row < getSizeRow(); row++)
+    {
+        // Iterate through cols, deleting all objects in the row
+        for (int col = 0; col < getSizeCol(); col++)
+        {
+            // Point tempCritter to the object at (row, col)
+            getSquareState(&tempCritter, row, col);
+
+            delete tempCritter;
+            boardState[row][col] = NULL;
+        }
+
+        // Delete the row array
+        delete[] boardState[row];
+        boardState[row] = NULL;
+    }
+
+    // Delete the board array
+    delete[] boardState;
+    boardState = NULL;
+}
+
+// Creates the board array, using current sizes for row and col
+void Board::makeBoardState()
+{
+    rows = getSizeRow();
+    cols = getSizeCol();
+
+    // Make board state with right dimensions
+    boardState = new Critter**[rows];
+    for (int i = 0; i < rows; i++)
+    {
+        boardState[i] = new Critter*[cols];
+    }
+
+    // Initialize critter pointers to NULL
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            boardState[i][j] = NULL;
+        }
+    }
+}
+
 
 // Initializes the locations of all ants and doodlebugs
 // **ASSUMES** numAnts + numDoodlebugs < sizeRow * sizeCol
