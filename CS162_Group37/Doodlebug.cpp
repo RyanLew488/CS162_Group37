@@ -5,6 +5,10 @@ Doodlebug::Doodlebug()
 
 }
 
+Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
+{
+}
+
 void Doodlebug::move()
 {
 	switch (dir)
