@@ -21,15 +21,20 @@ class Board
 {
 private:
     // Data members
+
+    // Constants use in game logic
+
+    // MOVE THESE CRITTER SPECIFIC PROPERTIES TO CRITTER/ANT/DB CLASS
+    // WITH GET FUNCTION
+    // const int ANT_BREEDING_PERIOD = 3;
+    // const int DB_BREEDING_PERIOD = 8;
+    // const int DB_STARVE_PERIOD = 3;
+
     // Limits for board size
     const int MAX_ROW = 30;
     const int MAX_COL = 30;
 
-    // Constants use in game logic
-    const int ANT_BREEDING_PERIOD = 3;
-    const int DB_BREEDING_PERIOD = 8;
-
-    const int DB_STARVE_PERIOD = 3;
+    const int MAX_DAYS = 5000;
 
     // Constant to define what char to print if blank square
     const char CHAR_EMPTY = ' ';
@@ -40,10 +45,17 @@ private:
     const int DB_ID = 1;
 
     // Chosen size of board
+    // e.g. sizeRow = 3 means there will be 3 rows
+    //  and the board rows will be:
+    //  0
+    //  1
+    //  2
+    //
     int sizeRow;
     int sizeCol;
 
     // For keeping track of game time
+    int dayLimit;
     int dayCounter;
 
     // 2D dynamic array of pointers to critter objects
@@ -52,6 +64,7 @@ private:
     // Methods
     // Initialization helper - (#ants, #dbs)
     void setInitLocs(int, int);
+    void placeRandLocCritters(int, int);
 
     // Prints the state of the board
     // ========USES CRITTER::PRINT()==========
@@ -105,6 +118,15 @@ private:
     // Helps breedCritters
     void addCritter(int, int, int);
 
+    // Holds the game flow
+    void newGame();
+
+    // Creates a new board from current data members
+    void makeBoardState();
+
+    // Erases the boardState array
+    void deleteBoardState();
+
 protected:
     // Data members
 
@@ -115,8 +137,7 @@ public:
 
     // Methods
     // Constructor
-    // (board size row, board size col, #ants, #dbs)
-    Board(int, int, int, int);
+    Board();
 
     ~Board();
 
