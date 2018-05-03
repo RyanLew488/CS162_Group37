@@ -8,25 +8,36 @@
 #include "board.hpp"
 #include "critter.hpp"
 
-enum Direction {UP, RIGHT, DOWN, LEFT};
+
 
 class Ant : public Critter 
 {
     private:
+        // ant's x pos
+        // ant's y pos
         int x = 0,
             y = 0,
+        // increment steps to breed
         steps = 0;
-    
+
+        // pointer to the board
         Critter*** board = nullptr;
 
     public:
-        Ant(int, int, int, Critter***board);
-        
+        // Default constructor takes in xPos and yPos of ant
+        // Default constructor take in board
+        Ant(int, int, Critter***board);
+        // Rand breed if steps >= 3
         void breed();
+        // Rand move if there are no Critters in adjacent cells
         void move();
-        // every tick of game
-        // board goes through each block and age all critters
+        // tick increments steps
         void tick();
+
+        // returns a pointer to a critter
+        Critter** getAvailability();
+        int * convertDirToRowCol(int);
+       
 };
 
 #endif
