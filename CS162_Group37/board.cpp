@@ -261,7 +261,7 @@ void Board::placeRandLocCritters(int speciesID, int numCritters)
             // If square is empty
             if (tempCritter == NULL)
             {
-                addCritter(speciesID, currentDay, spawnRow, spawnCol);
+                addCritter(speciesID, spawnRow, spawnCol);
                 flagSuccess = 1;
             }
         }
