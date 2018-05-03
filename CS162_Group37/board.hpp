@@ -127,6 +127,13 @@ private:
     // Erases the boardState array
     void deleteBoardState();
 
+    
+    // Get the Critter* at a square (row, col)
+    // returns an int to indicate success
+    //      0 - given coords invalid (outside board)
+    //      1 - given coords valid (inside board)
+    int getSquareState(Critter**, int, int);
+
 protected:
     // Data members
 
@@ -144,12 +151,6 @@ public:
     // Method for running the prey-predator game
     // All game logic and control contained inside runGame()
     void runGame();
-
-    // Get the Critter* at a square (row, col)
-    // returns an int to indicate success
-    //      0 - given coords invalid (outside board)
-    //      1 - given coords valid (inside board)
-    int getSquareState(Critter**, int, int);
 
 };
 
