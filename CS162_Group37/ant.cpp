@@ -5,7 +5,8 @@
  ******************************************************************************/
 #include "ant.hpp"
 
-Ant::Ant(int xPos, int yPos, int birth, Critter***Board)
+
+Ant::Ant(int xPos, int yPos, int birth, Critter**Board)
 {
     setXpos(xPos);
     setYpos(yPos);
@@ -16,7 +17,7 @@ Ant::Ant(int xPos, int yPos, int birth, Critter***Board)
 
 void Ant::breed()
 {
-    // if age is greater than 3
+    // step counter if steps >= 3
     if (getDayBirth() >= 3)
     {
         // generate random number to breed
