@@ -12,6 +12,8 @@
 #include <iostream>
 #include <string>
 
+#include board.hpp
+
 // Declare specific using statements to avoid namespace pollution
 
 using std::cout;
@@ -27,9 +29,9 @@ private:
     int dayBirth;
     int dayLastBred;
     int species;
+    int xPos, yPos;
 
 protected:
-
     // setters
     void set_species(int initSpecies);
     void set_dayBirth(int initDayBirth);
@@ -37,10 +39,10 @@ protected:
 public:
 
     // constructor
-    Critter(int day);
+    Critter(int day, int initSpecies, int xPos, int yPos);
 
     // destructor
-    virtual ~Critter();
+    virtual ~Critter() {};
 
     // getters
     int get_dayBirth();
@@ -50,10 +52,12 @@ public:
 
 	// setters
     void set_dayLastBred(int newDayLastBred);
+    void set_xPos(int initXPos);
+    void set_yPos(int initYPos);
 
     // class methods
     // virtual functions defined in the derived classes of Ant and Doodlebug
-    virtual void move() = 0;
+    virtual void move(int* arrBoard, int currentRow, int currentCol) = 0;
     virtual void breed() = 0;
 	
 };

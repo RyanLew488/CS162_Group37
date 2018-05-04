@@ -20,46 +20,56 @@ using std::endl;
 
 
 // constructor
-Critter(int day, int initSpecies)
+Critter::Critter(int day, int initSpecies, int xPos, int yPos)
 {
-    set_dayBirth(int day);
+    set_dayBirth(day);
     set_species(initSpecies);
-};
+    set_xPos(initXPos);
+    set_yPos(initYPos);
+}
 
 // destructor
-virtual ~Critter() {};
+virtual Critter::~Critter() {}
 
 // getters
-int get_dayBirth()
+int Critter::get_dayBirth()
 {
     return dayBirth;
 }
 
-int get_species()
+int Critter::get_species()
 {
     return species;
 }
 
-int get_dayLastBred()
+int Critter::get_dayLastBred()
 {
     return dayLastBred;
 }
 
 
 // setters
-void set_dayLastBred(int newDayLastBred)
+void Critter::set_dayLastBred(int newDayLastBred)
 {
     dayLastBred = newDayLastBred;
 }
 	
-void set_species(int initSpecies)
+void Critter::set_species(int initSpecies)
 {
     species = initSpecies;
 }
 
-void set_dayBirth(int initDayBirth);
+void Critter::set_dayBirth(int initDayBirth)
 {
     dayBirth = initDayBirth;
 }
 
+void Critter::set_xPos(int initXPos)
+{
+    xPos = initXPos;
+}
 
+void Critter::set_yPos(int initYPos)
+{
+    yPos = initYPos;
+}
