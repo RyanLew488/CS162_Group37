@@ -10,7 +10,7 @@
 #include <iostream>
 #include <string>
 
-#include "Critter.hpp"
+#include "critter.hpp"
 
 // Declare specific using statements to avoid namespace pollution
 
@@ -22,54 +22,54 @@ using std::endl;
 // constructor
 Critter::Critter(int day, int initSpecies, int xPos, int yPos)
 {
-    set_dayBirth(day);
-    set_species(initSpecies);
-    set_xPos(initXPos);
-    set_yPos(initYPos);
+    setDayBirth(day);
+    setSpecies(initSpecies);
+    setXPos(initXPos);
+    setYPos(initYPos);
 }
 
 // destructor
 virtual Critter::~Critter() {}
 
 // getters
-int Critter::get_dayBirth()
+int Critter::getDayBirth()
 {
     return dayBirth;
 }
 
-int Critter::get_species()
+int Critter::getSpecies()
 {
     return species;
 }
 
-int Critter::get_dayLastBred()
+int Critter::getDayLastBred()
 {
     return dayLastBred;
 }
 
 
 // setters
-void Critter::set_dayLastBred(int newDayLastBred)
+void Critter::setDayLastBred(int newDayLastBred)
 {
     dayLastBred = newDayLastBred;
 }
 	
-void Critter::set_species(int initSpecies)
+void Critter::setSpecies(int initSpecies)
 {
     species = initSpecies;
 }
 
-void Critter::set_dayBirth(int initDayBirth)
+void Critter::setDayBirth(int initDayBirth)
 {
     dayBirth = initDayBirth;
 }
 
-void Critter::set_xPos(int initXPos)
+void Critter::setXPos(int initXPos)
 {
     xPos = initXPos;
 }
 
-void Critter::set_yPos(int initYPos)
+void Critter::setYPos(int initYPos)
 {
     yPos = initYPos;
 }
