@@ -445,7 +445,7 @@ void Board::breedCritters(int speciesID)
                 // Check that new coords != old coords
                 if (offspringCoords[0] != oldRow && offspringCoords[1] != oldCol)
                 {
-                    addCritter(tempCritter, offspringCoords[0], offspringCoords[1]);
+                    addCritter(speciesID, offspringCoords[0], offspringCoords[1]);
                 }
             }
         }
