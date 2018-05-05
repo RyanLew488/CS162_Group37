@@ -30,6 +30,7 @@
 
 #include "board.hpp"
 #include "critter.hpp"
+#include "doodlebug.hpp"
 
 #include <iostream>
 #include <ctime>
