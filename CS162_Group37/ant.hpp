@@ -29,16 +29,7 @@ class Ant : public Critter
         // Rand breed if steps >= 3
         void breed();
         // Rand move if there are no Critters in adjacent cells
-        void move();
-        // tick increments steps
-        void tick();
-
-        // returns a pointer to a critter
-        Critter** getAvailability();
-        int * convertDirToRowCol(int);
-
-        getSpecies();
+        void move(int* arrBoard, int currentRow, int currentCol);
        
 };
-
 #endif
