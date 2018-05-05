@@ -5,7 +5,6 @@
  ******************************************************************************/
 #ifndef ANT_HPP
 #define ANT_HPP
-#include "board.hpp"
 #include "critter.hpp"
 
 
@@ -15,8 +14,8 @@ class Ant : public Critter
     private:
         // ant's x pos
         // ant's y pos
-        int x = 0,
-            y = 0,
+        int row = 0,
+            col = 0,
         // increment steps to breed
         steps = 0;
 
@@ -37,6 +36,8 @@ class Ant : public Critter
         // returns a pointer to a critter
         Critter** getAvailability();
         int * convertDirToRowCol(int);
+
+        getSpecies();
        
 };
 

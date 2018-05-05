@@ -4,10 +4,11 @@
  **     member variables and member functions for ant.
  ******************************************************************************/
 #include "ant.hpp"
+#include "board.hpp"
 #include <random>
 
 
-Ant::Ant(int row, int col, Critter**board)
+Ant::Ant(int row, int col, Critter***board)
 {
     this->board = board;
     // setting y position will be determined in Critter
@@ -49,34 +50,36 @@ void Ant::breed()
 
         // with count for nullptrs we need to generate values to breed
         // https://stackoverflow.com/questions/19665818/generate-random-numbers-using-c11-random-library
-
+        Critter** breeding = nullptr;
         if (count > 0)
         {
             std::random_device rd;
             std::mt19937 mt(rd());
+            // generate random number 0 - whatever minus one
             std::uniform_real_distribution<int> dir(0,count-1);
 
-            Critter *breeding = {
+            breeding = {
                 board[row+1][col], //up
                 board[row-1][col], //down
                 board[row][col-1], //left
                 board[row][col+1]; //right , corresponds to array from top
             };
-        }
+        
        
-        int temp = 0;
-        for (int i = 0; i < 4; i++)
-        {
-            if (arr[i] == nullptr)
+            int temp = 0;
+            for (int i = 0; i < 4; i++)
             {
-                temp++;
-                if (temp == count)
+                if (arr[i] == nullptr)
                 {
-                    int r = row + convertDirToRowCol(i)[0];
-                    int c = col + convertDirToRowCol(i)[0];
-                    breeding[i] = new Ant(r,c, this->board);
-                    break;
+                    temp++;
+                    if (temp == dir)
+                    {
+                        int r = row + convertDirToRowCol(i)[0];
+                        int c = col + convertDirToRowCol(i)[0];
+                        breeding[i] = new Ant(r,c, this->board);
+                        break;
                 }
+            }
             }
         }
         steps = 0;
@@ -170,12 +173,12 @@ int * convertDirToRowCol(int dir)
 Critter** Ant::getAvailability()
 {
     {
-        Critter*    up = nullptr;
-                    down = nullptr;
-                    left = nullptr;
-                    right = nullptr;
+        Critter*    up = nullptr,
+                    down = nullptr,
+                    left = nullptr,
+                    right = nullptr,
         
-        Critter *arr = {up, down, left, right};
+        Critter **arr = {up, down, left, right};
 
         if (row == 0)
         [
@@ -216,6 +219,8 @@ Critter** Ant::getAvailability()
 
         return arr;
     }
+
+    // either critter or nullptr being returned
 }
 
 void Ant::tick()

@@ -33,8 +33,8 @@ private:
 
 protected:
     // setters
-    void set_species(int initSpecies);
-    void set_dayBirth(int initDayBirth);
+    void setSpecies(int initSpecies);
+    void setDayBirth(int initDayBirth);
 
 public:
 
@@ -45,17 +45,21 @@ public:
     virtual ~Critter() {};
 
     // getters
-    int get_dayBirth();
-    int get_species();
-    int get_dayLastBred();
+    int getDayBirth();
+    int getSpecies();
+    int getDayLastBred();
 
 
 	// setters
-    void set_dayLastBred(int newDayLastBred);
-    void set_xPos(int initXPos);
-    void set_yPos(int initYPos);
+    void setDayLastBred(int newDayLastBred);
+    void setXPos(int initXPos);
+    void setYPos(int initYPos);
 
     // class methods
+
+    Critter** getAvailability();
+    int * convertDirToRowCol(int dir);
+
     // virtual functions defined in the derived classes of Ant and Doodlebug
     virtual void move(int* arrBoard, int currentRow, int currentCol) = 0;
     virtual void breed() = 0;
