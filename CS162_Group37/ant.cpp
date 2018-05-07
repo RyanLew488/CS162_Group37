@@ -8,16 +8,6 @@
 #include <random>
 
 
-Ant::Ant(int row, int col, Critter***board)
-{
-    this->board = board;
-    // setting y position will be determined in Critter
-    setR(row);
-    // setting x position will be determined in Critter
-    setC(col);
-    steps = 0;
-}
-
 void Ant::breed(int currentDay, int* passCoords, int currentRow, int currentCol)
 {
      setDayBirth(currentDay);
@@ -37,12 +27,4 @@ void Ant::move(int* passCoords, int currentRow, int currentCol)
 void Ant::getDayLastBred()
 {
     return steps;
-}
-
-
-
-void Ant::tick()
-{
-    move();
-    breed();
 }

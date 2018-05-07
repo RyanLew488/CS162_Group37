@@ -11,25 +11,12 @@
 
 class Ant : public Critter 
 {
-    private:
-        // ant's x pos
-        // ant's y pos
-        int row = 0,
-            col = 0,
-        // increment steps to breed
-        steps = 0;
-
-        // pointer to the board
-        Critter*** board = nullptr;
-
+    
     public:
-        // Default constructor takes in xPos and yPos of ant
-        // Default constructor take in board
-        Ant(int, int, Critter***board);
-        // Rand breed if steps >= 3
-        void breed();
+        void breed(int, int*, int, int);
         // Rand move if there are no Critters in adjacent cells
-        void move(int* arrBoard, int currentRow, int currentCol);
+        void move(int*, int, int);
+        void getDayLastBred();
        
 };
 #endif
