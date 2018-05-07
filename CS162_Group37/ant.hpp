@@ -5,39 +5,18 @@
  ******************************************************************************/
 #ifndef ANT_HPP
 #define ANT_HPP
-#include "board.hpp"
 #include "critter.hpp"
-
 
 
 class Ant : public Critter 
 {
-    private:
-        // ant's x pos
-        // ant's y pos
-        int x = 0,
-            y = 0,
-        // increment steps to breed
-        steps = 0;
-
-        // pointer to the board
-        Critter*** board = nullptr;
-
     public:
-        // Default constructor takes in xPos and yPos of ant
-        // Default constructor take in board
-        Ant(int, int, Critter***board);
-        // Rand breed if steps >= 3
-        void breed();
+        Ant(int day, int xPos, int yPos): Critter(day,0,xPos,yPos){};
+        Ant(int day, int initSpecies, int xPos, int yPos): Critter(day,0,xPos,yPos){};
+        void breed(int, int*, int, int);
         // Rand move if there are no Critters in adjacent cells
-        void move();
-        // tick increments steps
-        void tick();
-
-        // returns a pointer to a critter
-        Critter** getAvailability();
-        int * convertDirToRowCol(int);
+        void move(int*, int, int);
+        void getDayLastBred();
        
 };
-
 #endif

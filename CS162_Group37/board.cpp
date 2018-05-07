@@ -30,6 +30,7 @@
 
 #include "board.hpp"
 #include "critter.hpp"
+#include "doodlebug.hpp"
 
 #include <iostream>
 #include <ctime>
@@ -59,17 +60,37 @@ void Board::runGame()
     mainMenu.add("Quit");
     mainMenu.add("Play new game");
 
-    flagQuit = 0;
+    int flagQuit1 = 0;
 
-    while (!flagQuit)
+    while (!flagQuit1)
     {
         switch (mainMenu.run)
         {
             case 1:
-                flagQuit = 1;
+                flagQuit1 = 1;
                 break;
             case 2:
                 newGame();
+                break;
+        }
+    }
+
+    // To "extend" the current game
+    Menu extendGameMenu("***CONTINUE GAME?***");
+    extendGameMenu.add("Quit");
+    extendGameMenu.add("Extend current game");
+
+    int flagQuit2 = 0;
+
+    while (!flagQuit1 && !flagQuit2)
+    {
+        switch (extendGameMenu.run)
+        {
+            case 1:
+                flagQuit2 = 1;
+                break;
+            case 2:
+                extendedGame();
                 break;
         }
     }
@@ -79,14 +100,10 @@ void Board::runGame()
 
 // *****======PRIVATE=====*****
 
-
+// Handles user input for parameters related to setting
+// up the game for the first time
 void Board::newGame()
 {
-    // reset data members
-    deleteBoardState();
-    setDayCounter(1);
-
-
     // #days
     do
     {
@@ -95,17 +112,15 @@ void Board::newGame()
 
 
     // Board size
-    int rows;
     do
     {
         std::cout << "\n# of rows: ";
-    } while (!getValidInput(&rows, 1, MAX_ROW));
+    } while (!getValidInput(&sizeRow, 1, MAX_ROW));
 
-    int cols;
     do
     {
         std::cout << "\n# of cols: ";
-    } while (!getValidInput(&cols, 1, MAX_COL));
+    } while (!getValidInput(&sizeCol, 1, MAX_COL));
 
     // make board
     makeBoardState();
@@ -134,7 +149,33 @@ void Board::newGame()
     // Place ants and dbs on board
     setInitLocs(numAnts, numDoodlebugs);
 
-    // Loop until dayCounter == #days (might want to use >= to be safe)
+    // Run a normal game
+    runNormalGame();
+}
+
+
+// Handles user input for parameters related to extending the current
+// game
+void Board::extendedGame()
+{
+    int numMoreDays;
+
+    // #days
+    do
+    {
+        std::cout << "\n# MORE days to run game: ";
+    } while (!getValidInput(&numMoreDays, 0, MAX_DAYS - getDayCounter()));
+
+    dayLimit += numMoreDays;
+
+    runNormalGame();
+}
+
+
+// Executes the game
+void Board::runNormalGame()
+{
+    // Loop until dayCounter >= num days set by user
     while (getDayCounter() <= dayLimit)
     {
         // Order of events not finalized
@@ -150,6 +191,7 @@ void Board::newGame()
 
         incDay();
     }
+
 }
 
 // Get the address of the Critter at a square (row, col)

@@ -71,16 +71,6 @@ private:
     void printBoard();
 
     // Setters - NO VALIDATION
-    void setSizeRow(int inRow)
-    {
-        sizeRow = inRow;
-    }
-
-    void setSizeCol(int inCol)
-    {
-        sizeCol = inCol;
-    }
-
     void setDayCounter(int inDay)
     {
         dayCounter = inDay;
@@ -119,7 +109,11 @@ private:
     void addCritter(int, int, int);
 
     // Holds the game flow
+    void runNormalGame();
+
+    // Handles getting parameters from user before running game
     void newGame();
+    void extendedGame();
 
     // Creates a new board from current data members
     void makeBoardState();
