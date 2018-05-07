@@ -21,14 +21,16 @@
   <ItemGroup>
     <ClCompile Include="ant.cpp" />
     <ClCompile Include="board.cpp" />
-    <ClCompile Include="Doodlebug.cpp" />
+    <ClCompile Include="critter.cpp" />
+    <ClCompile Include="doodlebug.cpp" />
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="validation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ant.hpp" />
+    <ClInclude Include="ant.hpp" />
     <ClInclude Include="board.hpp" />
-    <ClInclude Include="Doodlebug.hpp" />
+    <ClInclude Include="critter.hpp" />
+    <ClInclude Include="doodlebug.hpp" />
     <ClInclude Include="menu.hpp" />
     <ClInclude Include="validation.hpp" />
   </ItemGroup>

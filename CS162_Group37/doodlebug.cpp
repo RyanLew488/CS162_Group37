@@ -1,62 +1,36 @@
 #include "Doodlebug.hpp"
+#include <iostream>
 
 Doodlebug::Doodlebug() 
 {
+	setDayBirth(0);
+	setSpecies(1);
+	setXPos(0);
+	setYPos(0);
+	setBreedingPeriod(8);
+	setDayLastBred(0);
 
+}
+
+void Doodlebug::setLastAte(int lastAte)
+{
+	this->lastAte = lastAte;
+}
+
+int Doodlebug::getLastAte()
+{
+	return lastAte;
 }
 
 Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
 {
 }
 
-void Doodlebug::move()
+void Doodlebug::move(int* passCoords, int currentRow, intcurrentCol)
 {
-	switch (dir)
-	{
-	case 0: //Up
-		if (yPos == 0)
-		{
-			yPos = boardHeight;
-		}
-		else
-		{
-			yPos--;
-		}
-		break;
-
-	case 1: //Right
-		if (xPos == boardWidth)
-		{
-			xPos = 0;
-		}
-		else
-		{
-			xPos++
-		}
-		break;
-
-	case 2: //Down
-		if (yPos == boardHeight)
-		{
-			yPos = 0;
-		}
-		else
-		{
-			yPos--;
-		}
-		break;
-
-	case 3: //Left
-		if (xPos == 0)
-		{
-			xPos = boardWidth;
-		}
-		else
-		{
-			xPos--;
-		}
-		break;
-	}
+	//stub function remove after implemented
+	std::cout << "Doodlebug moving" << std::endl
+	
 }
 
 void Doodlebug::turn()

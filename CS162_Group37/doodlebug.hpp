@@ -1,16 +1,16 @@
 #pragma once
-#include "Critter.hpp"
+#include "critter.hpp"
 
 class Doodlebug : public Critter 
 {
 private:
-	int age;
-	bool ate;
-	bool breedable;
+	int lastAte;
 
 public:
 	Doodlebug();
-	Doodlebug(int xPos, int yPos, bool ate, bool breedable);
-	void move();
-	void turn();
+	Doodlebug(int day, int xPos, int yPos);
+	void move(int*, int, int);
+	void turn(int*, int, int);
+	void setLastAte(int lastAte);
+	int getLastAte();
 };
