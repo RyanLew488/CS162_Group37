@@ -4,7 +4,7 @@
 ** Group Project: Predator-Prey Game
 ** Description: Header file to define the interface of the Critter class
 *********************************************************************/ 
-// Critter.hpp
+// critter.hpp
 
 #ifndef CRITTER_HPP
 #define CRITTER_HPP
@@ -22,6 +22,9 @@ using std::endl;
 
 enum Direction {UP, RIGHT, DOWN, LEFT};
 
+// const int ANT_ID = 0;
+// const int DB_ID = 1;
+
 class Critter
 {
 private: 
@@ -30,16 +33,20 @@ private:
     int dayLastBred;
     int species;
     int xPos, yPos;
+    int breedingPeriod;
+    char critterChar;
 
 protected:
     // setters
     void setSpecies(int initSpecies);
     void setDayBirth(int initDayBirth);
+    void setBreedingPeriod(int species);
+    void setCritterChar(int species);
 
 public:
 
     // constructor
-    Critter(int day, int initSpecies, int xPos, int yPos);
+    Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingPeriod);
 
     // destructor
     virtual ~Critter() {};
@@ -48,6 +55,8 @@ public:
     int getDayBirth();
     int getSpecies();
     int getDayLastBred();
+    int getBreedingPeriod();
+    char getCritterChar();
 
 
 	// setters
@@ -57,11 +66,10 @@ public:
 
     // class methods
 
-    Critter** getAvailability();
-    int * convertDirToRowCol(int dir);
+    void print();
 
     // virtual functions defined in the derived classes of Ant and Doodlebug
-    virtual void move(int* arrBoard, int currentRow, int currentCol) = 0;
+    virtual void move(int currentDay, int* newCoords, int currentRow, int currentCol) = 0;
     virtual void breed() = 0;
 	
 };

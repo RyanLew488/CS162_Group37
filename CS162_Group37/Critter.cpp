@@ -4,7 +4,7 @@
 ** Group Project: Predator-Prey Game
 ** Description: Implementation file for the Critter class
 *********************************************************************/ 
-// Critter.cpp
+// critter.cpp
 
 
 #include <iostream>
@@ -20,12 +20,14 @@ using std::endl;
 
 
 // constructor
-Critter::Critter(int day, int initSpecies, int xPos, int yPos)
+Critter::Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingPeriod)
 {
     setDayBirth(day);
     setSpecies(initSpecies);
     setXPos(initXPos);
     setYPos(initYPos);
+    setBreedingPeriod(initSpecies);
+    setDayLastBred(day);
 }
 
 // destructor
@@ -46,6 +48,17 @@ int Critter::getDayLastBred()
 {
     return dayLastBred;
 }
+
+int Critter::getBreedingPeriod()
+{
+    return breedingPeriod;
+}
+
+int Critter::getCritterChar()
+{
+    return critterChar;
+}
+ 
 
 
 // setters
@@ -72,4 +85,37 @@ void Critter::setXPos(int initXPos)
 void Critter::setYPos(int initYPos)
 {
     yPos = initYPos;
+}
+
+void Critter::setBreedingPeriod(int species)
+{
+    // const int ANT_ID = 0;
+    // const int DB_ID = 1;
+    if (species == 0)
+    {
+        breedingPeriod = 3;
+    }
+    else
+    {
+        breedingPeriod = 8;
+    }
+}
+
+void setCritterChar(int species)
+{
+    // const int ANT_ID = 0;
+    // const int DB_ID = 1;
+    if (species == 0)
+    {
+        critterChar = char(79);
+    }
+    else
+    {
+        critterChar = char(88);
+    }
+}
+
+void Critter::print()
+{
+    cout << getCritterChar();
 }
