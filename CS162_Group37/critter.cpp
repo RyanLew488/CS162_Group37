@@ -4,7 +4,7 @@
 ** Group Project: Predator-Prey Game
 ** Description: Implementation file for the Critter class
 *********************************************************************/ 
-// Critter.cpp
+// critter.cpp
 
 
 #include <iostream>
@@ -20,12 +20,14 @@ using std::endl;
 
 
 // constructor
-Critter::Critter(int day, int initSpecies, int xPos, int yPos)
+Critter::Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingPeriod)
 {
     setDayBirth(day);
     setSpecies(initSpecies);
     setXPos(initXPos);
     setYPos(initYPos);
+    setBreedingPeriod(initSpecies);
+    setDayLastBred(day);
 }
 
 // destructor
@@ -46,6 +48,17 @@ int Critter::getDayLastBred()
 {
     return dayLastBred;
 }
+
+int Critter::getBreedingPeriod()
+{
+    return breedingPeriod;
+}
+
+int Critter::getCritterChar()
+{
+    return critterChar;
+}
+ 
 
 
 // setters
@@ -74,84 +87,35 @@ void Critter::setYPos(int initYPos)
     yPos = initYPos;
 }
 
-
-
-int * Critter::convertDirToRowCol(int dir)
+void Critter::setBreedingPeriod(int species)
 {
-    int * arr = nullptr;
-    if (dir == 0)
+    // const int ANT_ID = 0;
+    // const int DB_ID = 1;
+    if (species == 0)
     {
-        // up
-        arr = {1,0};
-        return arr;
+        breedingPeriod = 3;
     }
-    else if (dir == 1)
+    else
     {
-        //down
-        arr = {-1,0};
-        return arr;
+        breedingPeriod = 8;
     }
-    else if (dir == 2)
-    {
-        arr = {0,-1};
-    }
-    else if (dir == 3)
-    {
-        arr = {0,1};
-        return arr;
-    }
-    throw string ("Dir should not be between 0-3, inclusively.");
 }
 
-Critter** Critter::getAvailability()
+void setCritterChar(int species)
 {
+    // const int ANT_ID = 0;
+    // const int DB_ID = 1;
+    if (species == 0)
     {
-        Critter*    up = nullptr,
-                    down = nullptr,
-                    left = nullptr,
-                    right = nullptr,
-        
-        Critter **arr = {up, down, left, right};
-
-        if (row == 0)
-        [
-            up = new Critter();
-        ]
-        else
-        {
-            up = board[row+1][col];
-        }
-
-        // 20x20 size of board to begin with, this can be altered
-        if (row == 19)
-        {
-            down = new Critter();
-        }
-        else 
-        {
-            down = board[row-1][col];
-        }
-
-        if (col == 0)
-        {
-            left = new Critter();
-        }
-        else
-        {
-            left = board[row[col-1]];
-        }
-
-        if (col == 19)
-        {
-            right = new Critter();
-        }
-        else
-        {
-            right = board[row[col+1]];
-        }
-
-        return arr;
+        critterChar = char(79);
     }
+    else
+    {
+        critterChar = char(88);
+    }
+}
 
-    // either critter or nullptr being returned
+void Critter::print()
+{
+    cout << getCritterChar();
 }
