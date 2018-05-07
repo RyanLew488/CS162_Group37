@@ -26,5 +26,5 @@ void Ant::move(int* passCoords, int currentRow, int currentCol)
 
 void Ant::getDayLastBred()
 {
-    return steps;
+    return dayLastBred;
 }
