@@ -179,8 +179,8 @@ void Board::runNormalGame()
     while (getDayCounter() <= dayLimit)
     {
         // Order of events not finalized
-        moveCritters(ANT_ID);
         moveCritters(DB_ID);
+        moveCritters(ANT_ID);
         breedCritters(ANT_ID);
         breedCritters(DB_ID);
         starveDoodlebugs();
