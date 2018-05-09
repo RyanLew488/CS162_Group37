@@ -15,7 +15,7 @@ Doodlebug::Doodlebug()
 }
 
 // ADDED SO THAT BOARD CAN FIND/USE CONSTRUCTOR
-Doodlebug::Doodlebug(int day, int xPos, int yPos)
+Doodlebug::Doodlebug(int day, int xPos, int yPos): Critter(day,1,0)
 {
 	//
 }
