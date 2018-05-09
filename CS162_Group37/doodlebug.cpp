@@ -14,6 +14,12 @@ Doodlebug::Doodlebug()
 
 }
 
+// ADDED SO THAT BOARD CAN FIND/USE CONSTRUCTOR
+Doodlebug::Doodlebug(int day, int xPos, int yPos)
+{
+	//
+}
+
 void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int currentCol)
 {
 	setDayBirth(currentDay);
