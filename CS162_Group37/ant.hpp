@@ -17,5 +17,11 @@ class Ant : public Critter
         void move(Critter *** boardState ,int currentDay, int* newCoords, int currentRow, int currentCol);
         void breed(Critter *** boardState ,int currentDay, int* newCoords, int currentRow, int currentCol);
         int * getAvailiable(Critter *** boardState, int currentRow, int currentCol);
+
+        // ADDED TO MATCH virtual void Critter::move
+        void move(int, int*, int, int){};
+        
+        // ADDED TO MATCH virtual void Critter:breed
+        void breed(int, int*, int, int){};
 };
 #endif
