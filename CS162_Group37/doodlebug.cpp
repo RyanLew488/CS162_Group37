@@ -35,10 +35,11 @@ int Doodlebug::getLastAte()
 	return lastAte;
 }
 
-Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
-{
+// COMMENTED OUT FOR COMPILATION, NO MATCHING PROTOTYPE IN HPP
+// Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
+// {
 
-}
+// }
 
 void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
 {
