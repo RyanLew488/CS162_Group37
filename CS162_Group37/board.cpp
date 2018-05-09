@@ -110,6 +110,8 @@ void Board::newGame()
     // Clear any existing board array
     deleteBoardState();
 
+    setDayCounter(1);
+
 
     // #days
     do
@@ -177,12 +179,15 @@ void Board::newGame()
 void Board::extendedGame()
 {
     int numMoreDays;
+    int upLimit = MAX_DAYS - getDayCounter();
+
+    std::cout << "day limit: " << dayLimit << std::endl;
 
     // #days
     do
     {
         std::cout << "\n# MORE days to run game: ";
-    } while (!getValidInput(&numMoreDays, 0, MAX_DAYS - getDayCounter()));
+    } while (!getValidInput(&numMoreDays, 0, upLimit));
 
     dayLimit += numMoreDays;
 
