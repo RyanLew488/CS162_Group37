@@ -20,15 +20,10 @@ using std::endl;
 
 
 // constructor
-Critter::Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingPeriod)
+Critter::Critter(int day, int initSpecies,int initbreedingPeriod)
 {
     setDayBirth(day);
     setSpecies(initSpecies);
-
-    // WEREN'T DECLARED IN CRITTER.HPP
-    // setXPos(initXPos);
-    // setYPos(initYPos);
-
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
 }
@@ -62,16 +57,6 @@ char Critter::getCritterChar()
 {
     return critterChar;
 }
- 
-int Critter::getXPos()
-{
-    return xPos;
-}
-
-int Critter::getYPos()
-{
-    return yPos;
-}
 
 
 // setters
@@ -88,16 +73,6 @@ void Critter::setSpecies(int initSpecies)
 void Critter::setDayBirth(int initDayBirth)
 {
     dayBirth = initDayBirth;
-}
-
-void Critter::setXPos(int initXPos)
-{
-    xPos = initXPos;
-}
-
-void Critter::setYPos(int initYPos)
-{
-    yPos = initYPos;
 }
 
 void Critter::setBreedingPeriod(int species)

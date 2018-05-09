@@ -34,7 +34,6 @@ private:
     int dayBirth;
     int dayLastBred;
     int species;
-    int xPos, yPos;
     int breedingPeriod;
     char critterChar;
 
@@ -48,7 +47,7 @@ protected:
 public:
 
     // constructor
-    Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingPeriod);
+    Critter(int day, int initSpecies, int initbreedingPeriod);
 
     // ADDED DEFAULT CONSTRUCTOR SO THAT Doodlebug::Doodlebug() COMPILES
     Critter() {};
@@ -61,14 +60,10 @@ public:
     int getSpecies();
     int getDayLastBred();
     int getBreedingPeriod();
-    int getXPos();
-    int getYPos();
     char getCritterChar();
 
 	// setters
     void setDayLastBred(int newDayLastBred);
-    void setXPos(int initXPos);
-    void setYPos(int initYPos);
 
     // class methods
 
