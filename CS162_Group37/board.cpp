@@ -32,6 +32,9 @@
 #include "critter.hpp"
 #include "doodlebug.hpp"
 
+#include "menu.hpp"
+#include "validation.hpp"
+
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -64,7 +67,7 @@ void Board::runGame()
 
     while (!flagQuit1)
     {
-        switch (mainMenu.run)
+        switch (mainMenu.run())
         {
             case 1:
                 flagQuit1 = 1;
@@ -84,7 +87,7 @@ void Board::runGame()
 
     while (!flagQuit1 && !flagQuit2)
     {
-        switch (extendGameMenu.run)
+        switch (extendGameMenu.run())
         {
             case 1:
                 flagQuit2 = 1;
@@ -130,7 +133,7 @@ void Board::newGame()
     int numAnts;
 
     // # ants can't exceed # squares on board
-    int maxAnts = rows * cols;
+    int maxAnts = getSizeRow() * getSizeCol();
     do
     {
         std::cout << "\n# of Ants to start: ";
@@ -140,7 +143,7 @@ void Board::newGame()
     int numDoodlebugs;
 
     // # DBs can't exceed # of remaining open squares
-    int maxDoodlebugs = rows * cols - numAnts;
+    int maxDoodlebugs = getSizeRow() * getSizeCol() - numAnts;
     do
     {
         std::cout << "\n# of Doodlebugs to start: ";
@@ -253,8 +256,8 @@ void Board::deleteBoardState()
 // Creates the board array, using current sizes for row and col
 void Board::makeBoardState()
 {
-    rows = getSizeRow();
-    cols = getSizeCol();
+    int rows = getSizeRow();
+    int cols = getSizeCol();
 
     // Make board state with right dimensions
     boardState = new Critter**[rows];
@@ -324,7 +327,7 @@ void Board::printBoard()
         // to access outside of the board)
 
     // Print horizontal border
-    for (int x = 0; x < getSizeCol(); j++)
+    for (int x = 0; x < getSizeCol(); x++)
     {
         std::cout << '-';
     }
@@ -361,7 +364,7 @@ void Board::printBoard()
     }
     
     // Print horizontal border
-    for (int x = 0; x < getSizeCol(); j++)
+    for (int x = 0; x < getSizeCol(); x++)
     {
         std::cout << "-";
     }
@@ -477,7 +480,7 @@ void Board::breedCritters(int speciesID)
             if (tempCritter->getSpecies() == speciesID)
             {
                 // check if eligible to breed
-                if (currentDay - tempCritter->getLastBreed() >= tempCritter->getBreedingPeriod())
+                if (currentDay - tempCritter->getDayLastBred() >= tempCritter->getBreedingPeriod())
                 {
                     // currentDay can be used by Critter to keep track of when
                     // it last gave birth
@@ -485,7 +488,7 @@ void Board::breedCritters(int speciesID)
                 }
 
                 // Check that new coords != old coords
-                if (offspringCoords[0] != oldRow && offspringCoords[1] != oldCol)
+                if (offspringCoords[0] != row && offspringCoords[1] != col)
                 {
                     addCritter(speciesID, offspringCoords[0], offspringCoords[1]);
                 }
@@ -528,8 +531,8 @@ void Board::starveDoodlebugs()
 
             if (tempCritter->getSpecies() == DB_ID)
             {
-                // check if eligible to breed
-                if (currentDay - tempCritter->getLastAte() >= tempCritter->getStarvePeriod())
+                // check if eligible to starve
+                if (getDayCounter() - tempCritter->getLastAte() >= tempCritter->getStarvePeriod())
                 {
                     delete tempCritter;
                     boardState[row][col] = NULL;
