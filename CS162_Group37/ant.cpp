@@ -4,7 +4,7 @@
  **     member variables and member functions for ant.
  ******************************************************************************/
 #include "ant.hpp"
-#include "Critter.hpp"
+#include "critter.hpp"
 #include <random>
 #include <vector>
 
