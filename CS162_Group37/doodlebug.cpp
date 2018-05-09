@@ -35,10 +35,11 @@ int Doodlebug::getLastAte()
 	return lastAte;
 }
 
-Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
-{
+// COMMENTED OUT FOR COMPILATION, NO MATCHING PROTOTYPE IN HPP
+// Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
+// {
 
-}
+// }
 
 void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
 {
@@ -56,6 +57,7 @@ void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
 		case 2: //South
 			break;
 		case 3: //West
+			break;			// ADDED break; BECAUSE COMPILE ERROR: 60:3: expected primary-expression before '}' token
 		}
 	}
 	else
