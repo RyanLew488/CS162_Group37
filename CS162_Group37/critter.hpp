@@ -56,6 +56,8 @@ public:
     int getSpecies();
     int getDayLastBred();
     int getBreedingPeriod();
+    int getXPos();
+    int getYPos();
     char getCritterChar();
 
 
