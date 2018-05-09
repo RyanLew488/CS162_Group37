@@ -125,10 +125,16 @@ void Board::newGame()
         std::cout << "\n# of rows: ";
     } while (!getValidInput(&sizeRow, 1, MAX_ROW));
 
+    // TESTING
+    std::cout << "rows: " << getSizeRow() << std::endl;
+
     do
     {
         std::cout << "\n# of cols: ";
     } while (!getValidInput(&sizeCol, 1, MAX_COL));
+
+    // TESTING
+    std::cout << "cols: " << getSizeCol() << std::endl;
 
     // make board
     makeBoardState();
@@ -144,6 +150,9 @@ void Board::newGame()
         std::cout << "\n# of Ants to start: ";
     } while (!getValidInput(&numAnts, 0, maxAnts));
     
+    // TESTING
+    std::cout << "#ants: " << numAnts << std::endl;
+    
     // #dbs
     int numDoodlebugs;
 
@@ -153,9 +162,15 @@ void Board::newGame()
     {
         std::cout << "\n# of Doodlebugs to start: ";
     } while (!getValidInput(&numDoodlebugs, 0, maxDoodlebugs));
+    
+    // TESTING
+    std::cout << "#dbs: " << numDoodlebugs << std::endl;
 
     // Place ants and dbs on board
     setInitLocs(numAnts, numDoodlebugs);
+
+    std::cout << "*****Inital board setup*****" << std::endl;
+    printBoard();
 
     // Run a normal game
     runNormalGame();
@@ -332,6 +347,8 @@ void Board::printBoard()
         // to access outside of the board)
 
     // Print horizontal border
+    std::cout << ' ';
+
     for (int x = 0; x < getSizeCol(); x++)
     {
         std::cout << '-';
@@ -342,12 +359,12 @@ void Board::printBoard()
     // Iterate through rows
     for (int i = 0; i < getSizeRow(); i++)
     {
+        // Print vertical border
+        std::cout << '|';
+
         // Iterate through cols
         for (int j = 0; j < getSizeCol(); j++)
         {
-            // Print vertical border
-            std::cout << '|';
-
             // Point tempCritter to the object at (row, col)
             getSquareState(&tempCritter, i, j);
 
@@ -362,13 +379,15 @@ void Board::printBoard()
                 // Critter::print() prints char to std::cout
                 tempCritter->print();
             }
-
-            // Print vertical border
-            std::cout << '|' << std::endl;
         }
+
+        // Print vertical border
+        std::cout << '|' << std::endl;
     }
     
     // Print horizontal border
+    std::cout << ' ';
+
     for (int x = 0; x < getSizeCol(); x++)
     {
         std::cout << "-";
