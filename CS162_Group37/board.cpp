@@ -62,7 +62,7 @@ Board::~Board()
 // Used to run the predator-prey game
 void Board::runGame()
 {
-    std::cout << "*****=====GROUP 37 - PREDATOR/PREY PROJECT - W/ EXTRA CREDIT=====*****" << std::endl;
+    std::cout << "\n\n\n\n*****=====GROUP 37 - PREDATOR/PREY PROJECT - W/ EXTRA CREDIT=====*****" << std::endl;
 
     Menu mainMenu("***PLAY GAME - MAIN MENU***");
     mainMenu.add("Quit");
