@@ -50,6 +50,9 @@ public:
     // constructor
     Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingPeriod);
 
+    // ADDED DEFAULT CONSTRUCTOR SO THAT Doodlebug::Doodlebug() COMPILES
+    Critter() {};
+
     // destructor
     virtual ~Critter() {};
 
