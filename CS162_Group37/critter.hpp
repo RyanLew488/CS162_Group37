@@ -58,6 +58,8 @@ public:
     int getSpecies();
     int getDayLastBred();
     int getBreedingPeriod();
+    int getXPos();
+    int getYPos();
     char getCritterChar();
 
     // ADDED BY DAVID TO ALLOW COMPILATION.  TO BE FILLED OUT W/ DETAILS LATER.

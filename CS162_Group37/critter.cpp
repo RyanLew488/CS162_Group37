@@ -63,6 +63,15 @@ char Critter::getCritterChar()
     return critterChar;
 }
  
+int Critter::getXPos()
+{
+    return xPos;
+}
+
+int Critter::getYPos()
+{
+    return yPos;
+}
 
 
 // setters
