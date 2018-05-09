@@ -24,14 +24,18 @@ Critter::Critter(int day, int initSpecies, int xPos, int yPos, int initbreedingP
 {
     setDayBirth(day);
     setSpecies(initSpecies);
-    setXPos(initXPos);
-    setYPos(initYPos);
+
+    // WEREN'T DECLARED IN CRITTER.HPP
+    // setXPos(initXPos);
+    // setYPos(initYPos);
+
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
 }
 
+// 'virtual' OUTSIDE CLASS DECLARATION.
 // destructor
-virtual Critter::~Critter() {}
+// virtual Critter::~Critter() {}
 
 // getters
 int Critter::getDayBirth()
@@ -54,7 +58,7 @@ int Critter::getBreedingPeriod()
     return breedingPeriod;
 }
 
-int Critter::getCritterChar()
+char Critter::getCritterChar()
 {
     return critterChar;
 }
