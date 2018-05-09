@@ -46,12 +46,17 @@ Board::Board()
 {
     // seed rand
     std::srand(std::time(nullptr));
+
+    boardState = NULL;
 }
 
 // Destructor
 Board::~Board()
 {
-    deleteBoardState();
+    if (boardState != NULL)
+    {
+        deleteBoardState();
+    }
 }
 
 // Used to run the predator-prey game
