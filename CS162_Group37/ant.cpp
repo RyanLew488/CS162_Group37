@@ -61,10 +61,13 @@ int * Ant::getAvailiable(Critter *** boardState, int currentRow, int currentCol)
         std::uniform_int_distribution<int> dir{0, count-1};
 
         int direction = dir(e);
-        int x = v.at(direction)->getXPos();
-        int y = v.at(direction)->getYPos();
-        results[0] = x;
-        results[1] = y;
+
+        // COMMENTED OUT SO THAT WE CAN COMPILE
+        // ERROR RESULTS BECAUSE getXPos AND getYPos ARE NO LONGER CRITTER METHODS
+        // int x = v.at(direction)->getXPos();
+        // int y = v.at(direction)->getYPos();
+        // results[0] = x;
+        // results[1] = y;
     }
 
     return results;
