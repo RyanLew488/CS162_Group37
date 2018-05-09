@@ -31,10 +31,10 @@ private:
     // const int DB_STARVE_PERIOD = 3;
 
     // Limits for board size
-    const int MAX_ROW = 30;
-    const int MAX_COL = 30;
+    const int MAX_ROW = 80;
+    const int MAX_COL = 80;
 
-    const int MAX_DAYS = 5000;
+    const int MAX_DAYS = 15000;
 
     // Constant to define what char to print if blank square
     // const char CHAR_EMPTY = ' ';
