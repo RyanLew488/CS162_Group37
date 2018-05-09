@@ -58,6 +58,10 @@ public:
     int getBreedingPeriod();
     char getCritterChar();
 
+    // ADDED BY DAVID TO ALLOW COMPILATION.  TO BE FILLED OUT W/ DETAILS LATER.
+    int getLastAte(){};
+    int getStarvePeriod(){};
+
 
 	// setters
     void setDayLastBred(int newDayLastBred);
