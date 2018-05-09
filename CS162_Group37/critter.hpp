@@ -62,11 +62,6 @@ public:
     int getYPos();
     char getCritterChar();
 
-    // ADDED BY DAVID TO ALLOW COMPILATION.  TO BE FILLED OUT W/ DETAILS LATER.
-    int getLastAte(){};
-    int getStarvePeriod(){};
-
-
 	// setters
     void setDayLastBred(int newDayLastBred);
     void setXPos(int initXPos);
@@ -79,6 +74,11 @@ public:
     // virtual functions defined in the derived classes of Ant and Doodlebug
     virtual void move(int currentDay, int* newCoords, int currentRow, int currentCol) = 0;
     virtual void breed(int, int*, int, int) = 0;
+
+    // ADDED BY DAVID TO ALLOW COMPILATION.  TO BE FILLED OUT W/ DETAILS LATER.
+    // virtual functions defined in the derived classes of Doodlebug
+    virtual int getLastAte(){};
+    virtual int getStarvePeriod(){};
 	
 };
 #endif
