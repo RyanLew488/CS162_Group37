@@ -12,7 +12,9 @@
 #include <iostream>
 #include <string>
 
-#include "board.hpp"
+// CREATES AN ERROR BECAUSE IT CAUSES A LOOP IN COMPILATION
+// board.hpp #includes critter.hpp which #includes board.hpp....
+// #include "board.hpp"
 
 // Declare specific using statements to avoid namespace pollution
 
