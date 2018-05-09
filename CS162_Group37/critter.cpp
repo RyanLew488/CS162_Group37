@@ -105,7 +105,8 @@ void Critter::setBreedingPeriod(int species)
     }
 }
 
-void setCritterChar(int species)
+// ADDED "Critter::"
+void Critter::setCritterChar(int species)
 {
     // const int ANT_ID = 0;
     // const int DB_ID = 1;
