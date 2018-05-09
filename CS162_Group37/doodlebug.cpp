@@ -57,7 +57,7 @@ void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
 		case 2: //South
 			break;
 		case 3: //West
-			break;
+			break;			// ADDED break; BECAUSE COMPILE ERROR: 60:3: expected primary-expression before '}' token
 		}
 	}
 	else
