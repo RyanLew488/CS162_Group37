@@ -41,7 +41,7 @@ int Doodlebug::getLastAte()
 
 // }
 
-void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
+void Doodlebug::move(int currentDay, int* passCoords, int currentRow, int currentCol)
 {
 	bool validMove = false;
 	int direction = 0; // 0:N 1:E 2:S 3:W 

@@ -9,7 +9,7 @@ private:
 public:
 	Doodlebug();
 	Doodlebug(int day, int xPos, int yPos);
-	void move(int*, int, int);
+	void move(int, int*, int, int);
 	void breed(int currentDay, int* passCoords, int currentRow, int currentCol);
 	void setLastAte(int lastAte);
 	int getLastAte();
