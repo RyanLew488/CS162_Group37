@@ -40,15 +40,27 @@ Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
 
 }
 
-void Doodlebug::move(int* passCoords, int currentRow, intcurrentCol)
+void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
 {
-	//stub function remove after implemented
-	std::cout << "Doodlebug moving" << std::endl;
-	setDayLastBred(getDayLastBred() + 1);
-	
+	bool validMove = false;
+	int direction = 0; // 0:N 1:E 2:S 3:W 
+	direction = rand() % 4;
+	if (validMove)
+	{
+		switch (direction)
+		{
+		case 0: //North
+			break;
+		case 1: //East
+			break;
+		case 2: //South
+			break;
+		case 3: //West
+		}
+	}
+	else
+	{
+		return;
+	}
 }
 
-void Doodlebug::turn()
-{
-
-}
