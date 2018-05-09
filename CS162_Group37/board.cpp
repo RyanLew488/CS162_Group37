@@ -54,10 +54,7 @@ Board::Board()
 // Destructor
 Board::~Board()
 {
-    if (boardState != NULL)
-    {
-        deleteBoardState();
-    }
+    deleteBoardState();
 }
 
 // Used to run the predator-prey game
@@ -71,17 +68,14 @@ void Board::runGame()
 
     int flagQuit1 = 0;
 
-    while (!flagQuit1)
+    switch (mainMenu.run())
     {
-        switch (mainMenu.run())
-        {
-            case 1:
-                flagQuit1 = 1;
-                break;
-            case 2:
-                newGame();
-                break;
-        }
+        case 1:
+            flagQuit1 = 1;
+            break;
+        case 2:
+            newGame();
+            break;
     }
 
     // To "extend" the current game
@@ -113,6 +107,10 @@ void Board::runGame()
 // up the game for the first time
 void Board::newGame()
 {
+    // Clear any existing board array
+    deleteBoardState();
+
+
     // #days
     do
     {
@@ -188,7 +186,7 @@ void Board::extendedGame()
 
     dayLimit += numMoreDays;
 
-    runNormalGame();
+    // runNormalGame();         // TESTING
 }
 
 
@@ -245,29 +243,34 @@ int Board::getSquareState(Critter** critterHolder, int inRow, int inCol)
 // the array
 void Board::deleteBoardState()
 {
-    Critter* tempCritter;
-
-    // Iterate through rows
-    for (int row = 0; row < getSizeRow(); row++)
+    if (boardState != NULL)
     {
-        // Iterate through cols, deleting all objects in the row
-        for (int col = 0; col < getSizeCol(); col++)
-        {
-            // Point tempCritter to the object at (row, col)
-            getSquareState(&tempCritter, row, col);
 
-            delete tempCritter;
-            boardState[row][col] = NULL;
+        Critter* tempCritter;
+
+        // Iterate through rows
+        for (int row = 0; row < getSizeRow(); row++)
+        {
+            // Iterate through cols, deleting all objects in the row
+            for (int col = 0; col < getSizeCol(); col++)
+            {
+                // Point tempCritter to the object at (row, col)
+                getSquareState(&tempCritter, row, col);
+
+                delete tempCritter;
+                boardState[row][col] = NULL;
+            }
+
+            // Delete the row array
+            delete[] boardState[row];
+            boardState[row] = NULL;
         }
 
-        // Delete the row array
-        delete[] boardState[row];
-        boardState[row] = NULL;
-    }
+        // Delete the board array
+        delete[] boardState;
+        boardState = NULL;
 
-    // Delete the board array
-    delete[] boardState;
-    boardState = NULL;
+    }
 }
 
 // Creates the board array, using current sizes for row and col
