@@ -126,19 +126,19 @@ void Board::newGame()
         std::cout << "\n# of rows: ";
     } while (!getValidInput(&sizeRow, 1, MAX_ROW));
 
-    // TESTING
-    std::cout << "rows: " << getSizeRow() << std::endl;
-
     do
     {
         std::cout << "\n# of cols: ";
     } while (!getValidInput(&sizeCol, 1, MAX_COL));
 
-    // TESTING
-    std::cout << "cols: " << getSizeCol() << std::endl;
+
 
     // make board
     makeBoardState();
+    
+    std::cout << "*****Board has been created*****" << std::endl;
+    printBoard();
+
 
 
     // #ants
@@ -150,10 +150,7 @@ void Board::newGame()
     {
         std::cout << "\n# of Ants to start: ";
     } while (!getValidInput(&numAnts, 0, maxAnts));
-    
-    // TESTING
-    std::cout << "#ants: " << numAnts << std::endl;
-    
+       
     // #dbs
     int numDoodlebugs;
 
@@ -164,17 +161,16 @@ void Board::newGame()
         std::cout << "\n# of Doodlebugs to start: ";
     } while (!getValidInput(&numDoodlebugs, 0, maxDoodlebugs));
     
-    // TESTING
-    std::cout << "#dbs: " << numDoodlebugs << std::endl;
-
     // Place ants and dbs on board
     setInitLocs(numAnts, numDoodlebugs);
 
     std::cout << "*****Inital board setup*****" << std::endl;
     printBoard();
 
+
+
     // Run a normal game
-    runNormalGame();
+    // runNormalGame();         // TESTING
 }
 
 
@@ -331,13 +327,6 @@ void Board::placeRandLocCritters(int speciesID, int numCritters)
             if (tempCritter == NULL)
             {
                 addCritter(speciesID, spawnRow, spawnCol);
-
-                // TESTING
-                std::cout << "created a Critter" << std::endl;
-                std::cout << "speciesID: " << speciesID << std::endl;
-                std::cout << "spawn row: " << spawnRow << std::endl;
-                std::cout << "spawn col: " << spawnCol << std::endl;
-
                 flagSuccess = 1;
             }
         }
