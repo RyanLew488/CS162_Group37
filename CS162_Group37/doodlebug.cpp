@@ -57,6 +57,7 @@ void Doodlebug::move(int* passCoords, int currentRow, int currentCol)
 		case 2: //South
 			break;
 		case 3: //West
+			break;
 		}
 	}
 	else
