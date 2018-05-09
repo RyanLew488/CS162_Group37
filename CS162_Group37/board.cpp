@@ -30,6 +30,7 @@
 
 #include "board.hpp"
 #include "critter.hpp"
+#include "ant.hpp"
 #include "doodlebug.hpp"
 
 #include "menu.hpp"
@@ -330,6 +331,13 @@ void Board::placeRandLocCritters(int speciesID, int numCritters)
             if (tempCritter == NULL)
             {
                 addCritter(speciesID, spawnRow, spawnCol);
+
+                // TESTING
+                std::cout << "created a Critter" << std::endl;
+                std::cout << "speciesID: " << speciesID << std::endl;
+                std::cout << "spawn row: " << spawnRow << std::endl;
+                std::cout << "spawn col: " << spawnCol << std::endl;
+
                 flagSuccess = 1;
             }
         }
@@ -528,11 +536,13 @@ void Board::addCritter(int speciesID, int row, int col)
 {
     if (speciesID == ANT_ID)
     {
-        // boardState[row][col] = new Ant...
+        // MIGHT NEED TO BE REVISED
+        boardState[row][col] = new Ant(getDayCounter(), col, row);
     }
     else
     {
-        // boardState[row][col] = new DB...
+        // MIGHT NEED TO BE REVISED
+        boardState[row][col] = new Doodlebug(getDayCounter(), col, row);
     }
 }
 
