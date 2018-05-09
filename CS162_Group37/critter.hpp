@@ -12,7 +12,7 @@
 #include <iostream>
 #include <string>
 
-#include board.hpp
+#include "board.hpp"
 
 // Declare specific using statements to avoid namespace pollution
 
@@ -70,7 +70,7 @@ public:
 
     // virtual functions defined in the derived classes of Ant and Doodlebug
     virtual void move(int currentDay, int* newCoords, int currentRow, int currentCol) = 0;
-    virtual void breed() = 0;
+    virtual void breed(int, int*, int, int) = 0;
 	
 };
 #endif
