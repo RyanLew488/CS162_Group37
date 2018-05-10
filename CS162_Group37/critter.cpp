@@ -27,6 +27,9 @@ Critter::Critter(int day, int initSpecies,int initbreedingPeriod, int initSizeRo
     setCritterChar(initSpecies);
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
+    setSizeRow(initSizeRow);
+    setSizeCol(initSizeCol);
+    setBoardStatePtr(pointerToBoardState);
 }
 
 // 'virtual' OUTSIDE CLASS DECLARATION.
@@ -90,7 +93,6 @@ void Critter::setBreedingPeriod(int species)
     }
 }
 
-// ADDED "Critter::"
 void Critter::setCritterChar(int species)
 {
     // const int ANT_ID = 0;
@@ -104,6 +106,22 @@ void Critter::setCritterChar(int species)
         critterChar = char(88);
     }
 }
+
+void Critter::setSizeRow(int initSizeRow)
+{
+    sizeRow = initSizeRow;
+}
+
+void Critter::setSizeCol(int initSizeCol)
+{
+    sizeCol = initSizeCol;
+}
+
+void Critter::setBoardStatePtr(Critter*** initPointerToBoardState);
+{
+    pointerToBoardState = initPointerToBoardState;
+}
+
 
 void Critter::print()
 {

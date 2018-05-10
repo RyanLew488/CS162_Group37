@@ -47,6 +47,9 @@ protected:
     void setDayBirth(int initDayBirth);
     void setBreedingPeriod(int species);
     void setCritterChar(int species);
+    void setSizeRow(int sizeRow);
+    void setSizeCol(int sizeCol);
+    void setBoardStatePtr(Critter*** pointerToBoardState);
 
 public:
 
