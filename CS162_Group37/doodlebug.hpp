@@ -32,8 +32,6 @@ private:
 		setRowPos(inY);
 	}
 
-
-
 	int getColPos()
 	{
 		return colPos;
@@ -60,5 +58,6 @@ public:
 	void move(int, int*, int, int);
 	void breed(int currentDay, int* passCoords, int currentRow, int currentCol);
 	void setLastAte(int lastAte);
+	int* getAvailableMove(Critter*** boardState, int currentRow, int currentCol);
 	int getLastAte();
 };

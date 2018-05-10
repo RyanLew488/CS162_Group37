@@ -14,6 +14,11 @@ Doodlebug::Doodlebug()
 
 }
 
+// COMMENTED OUT FOR COMPILATION, NO MATCHING PROTOTYPE IN HPP
+// Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
+// {
+
+// }
 // ADDED SO THAT BOARD CAN FIND/USE CONSTRUCTOR
 Doodlebug::Doodlebug(int day, int xPos, int yPos): Critter(day,1,0)
 {
@@ -22,13 +27,10 @@ Doodlebug::Doodlebug(int day, int xPos, int yPos): Critter(day,1,0)
 
 void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int currentCol)
 {
-	setDayBirth(currentDay);
-	setXPos(passCoords[0]);
-	setYPos(passCoords[1]);
-	setDayLastBred(0);
-	setSpecies(1);
-	setBreedingPeriod(1);
-	setLastAte(0);
+	if (currentDay - getDayLastBred() >= 8) 
+	{
+		setDayLastBred() = currentDay;
+	}
 }
 
 void Doodlebug::setLastAte(int lastAte)
@@ -36,39 +38,23 @@ void Doodlebug::setLastAte(int lastAte)
 	this->lastAte = lastAte;
 }
 
+int * Doodlebug::getAvailableMove(Critter *** boardState, int currentRow, int currentCol)
+{
+	int * results = new int[2];
+	results[0] = this->getXPos();
+	results[1] = this->getXPos();
+
+	return results;
+}
+
 int Doodlebug::getLastAte()
 {
 	return lastAte;
 }
 
-// COMMENTED OUT FOR COMPILATION, NO MATCHING PROTOTYPE IN HPP
-// Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
-// {
-
-// }
 
 void Doodlebug::move(int currentDay, int* passCoords, int currentRow, int currentCol)
 {
-	bool validMove = false;
-	int direction = 0; // 0:N 1:E 2:S 3:W 
-	direction = rand() % 4;
-	if (validMove)
-	{
-		switch (direction)
-		{
-		case 0: //North
-			break;
-		case 1: //East
-			break;
-		case 2: //South
-			break;
-		case 3: //West
-			break;			// ADDED break; BECAUSE COMPILE ERROR: 60:3: expected primary-expression before '}' token
-		}
-	}
-	else
-	{
-		return;
-	}
+	
 }
 
