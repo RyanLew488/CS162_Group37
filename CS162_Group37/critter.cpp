@@ -20,11 +20,10 @@ using std::endl;
 
 
 // constructor
-Critter::Critter(int day, int initSpecies,int initbreedingPeriod)
+Critter::Critter(int day, int initSpecies,int initbreedingPeriod, int initSizeRow, int initSizeCol, Critter*** pointerToBoardState)
 {
     setDayBirth(day);
     setSpecies(initSpecies);
-    setCritterChar(initSpecies);        // ADDED SO ALL CRITTERS WILL HAVE A CHAR TO PRINT
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
 }
