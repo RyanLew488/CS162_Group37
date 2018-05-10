@@ -66,8 +66,8 @@ void Ant::move(int currentDay, int* newCoords, int currentRow, int currentCol)
 
 void Ant::breed(int currentDay, int* breedCoords, int currentRow, int currentCol)
 {
-    int breedRow;
-    int breedCol;
+    int breedRow = currentRow;
+    int breedCol = currentCol;
 
     bool flagAllDirectionsChecked = 0;
     bool flagUpChecked = 0;
