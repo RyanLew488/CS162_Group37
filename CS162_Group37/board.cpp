@@ -170,7 +170,7 @@ void Board::newGame()
 
 
     // Run a normal game
-    runNormalGame();         // TESTING
+    runNormalGame();
 }
 
 
@@ -181,8 +181,6 @@ void Board::extendedGame()
     int numMoreDays;
     int upLimit = MAX_DAYS - getDayCounter();
 
-    std::cout << "day limit: " << dayLimit << std::endl;
-
     // #days
     do
     {
@@ -191,7 +189,7 @@ void Board::extendedGame()
 
     dayLimit += numMoreDays;
 
-    runNormalGame();         // TESTING
+    runNormalGame();
 }
 
 
@@ -413,7 +411,7 @@ void Board::moveCritters(int speciesID)
 {
 
     // TESTING
-    std::cout << "moving" << std::endl;
+    // std::cout << "moving" << std::endl;
 
 
     Critter* tempCritter;
@@ -438,7 +436,7 @@ void Board::moveCritters(int speciesID)
             {
 
                 // TESTING
-                std::cout << "row: " << oldRow << " col: " << oldCol << " Critter is NOT null (moving)" << std::endl;
+                // std::cout << "row: " << oldRow << " col: " << oldCol << " Critter is NOT null (moving)" << std::endl;
 
                 // if species matches AND critter hasn't beem moved today
                 if (tempCritter->getSpecies() == speciesID && tempCritter->getDayLastMove() < getDayCounter())
@@ -452,11 +450,11 @@ void Board::moveCritters(int speciesID)
                     tempCritter->move(getDayCounter(), newCoords, oldRow, oldCol);
 
                     // TESTING
-                    std::cout << "Moving critter (moveCritters): "
-                        << "\noldRow: " << oldRow
-                        << "\noldCol: " << oldCol
-                        << "\nnewRow: " << newCoords[0]
-                        << "\nnewCol: " << newCoords[1] << std::endl;
+                    // std::cout << "Moving critter (moveCritters): "
+                    //     << "\noldRow: " << oldRow
+                    //     << "\noldCol: " << oldCol
+                    //     << "\nnewRow: " << newCoords[0]
+                    //     << "\nnewCol: " << newCoords[1] << std::endl;
 
                     // Check that new coords != old coords
                     if (newCoords[0] != oldRow || newCoords[1] != oldCol)
@@ -468,7 +466,7 @@ void Board::moveCritters(int speciesID)
             else
             {
                 // TESTING
-                std::cout << "row: " << oldRow << " col: " << oldCol << " Critter IS null (moving)" << std::endl;
+                // std::cout << "row: " << oldRow << " col: " << oldCol << " Critter IS null (moving)" << std::endl;
             }
         }
     }
@@ -482,11 +480,11 @@ void Board::moveTo(Critter* movingCritter, int oldRow, int oldCol, int newRow, i
     Critter* deadCritter;    // Critter occupying (newRow, newCol)
 
     // TESTING
-    std::cout << "Moving critter (moveTo): "
-        << "\noldRow: " << oldRow
-        << "\noldCol: " << oldCol
-        << "\nnewRow: " << newRow
-        << "\nnewCol: " << newCol << std::endl;
+    // std::cout << "Moving critter (moveTo): "
+    //     << "\noldRow: " << oldRow
+    //     << "\noldCol: " << oldCol
+    //     << "\nnewRow: " << newRow
+    //     << "\nnewCol: " << newCol << std::endl;
     
     // Make deadCritter point to the Critter on the square where movingCritter will be
     getSquareState(&deadCritter, newRow, newCol);
@@ -519,7 +517,7 @@ void Board::moveTo(Critter* movingCritter, int oldRow, int oldCol, int newRow, i
 void Board::breedCritters(int speciesID)
 {
     // TESTING
-    std::cout << "breeding" << std::endl;
+    // std::cout << "breeding" << std::endl;
 
     Critter* tempCritter;
         // could use a flag to check if out of bounds, but
@@ -544,18 +542,18 @@ void Board::breedCritters(int speciesID)
             if (tempCritter != NULL)
             {
                 //TESTING
-                std::cout << "row: " << row << " col: " << col << " Critter is NOT null (breeding)" << std::endl;
+                // std::cout << "row: " << row << " col: " << col << " Critter is NOT null (breeding)" << std::endl;
 
                 if (tempCritter->getSpecies() == speciesID)
                 {
                     // TESTING
-                    std::cout << "1" << std::endl;
+                    // std::cout << "1" << std::endl;
 
                     // check if eligible to breed
                     if (currentDay - tempCritter->getDayLastBred() >= tempCritter->getBreedingPeriod())
                     {
                         // TESTING
-                        std::cout << "2" << std::endl;
+                        // std::cout << "2" << std::endl;
 
                         // currentDay can be used by Critter to keep track of when
                         // it last gave birth
@@ -565,7 +563,7 @@ void Board::breedCritters(int speciesID)
                         if (offspringCoords[0] != row || offspringCoords[1] != col)
                         {
                             // TESTING
-                            std::cout << "3" << std::endl;
+                            // std::cout << "3" << std::endl;
                         
                             addCritter(speciesID, offspringCoords[0], offspringCoords[1]);
                         }
@@ -575,7 +573,7 @@ void Board::breedCritters(int speciesID)
             else
             {
                 // TESTING
-                std::cout << "row: " << row << " col: " << col << " Critter IS null (breeding)" << std::endl;
+                // std::cout << "row: " << row << " col: " << col << " Critter IS null (breeding)" << std::endl;
             }
         }
     }
@@ -586,15 +584,28 @@ void Board::breedCritters(int speciesID)
 // Also assumes that new Critters are ONLY added to empty squares
 void Board::addCritter(int speciesID, int row, int col)
 {
+    int day;
+
+    // If critter is created as part of the initial setup, set day to 0
+    // so that critter will move during day 1
+    if (getDayCounter() == 1)
+    {
+        day = 0;
+    }
+    else
+    {
+        day = getDayCounter();
+    }
+
     if (speciesID == ANT_ID)
     {
         // MIGHT NEED TO BE REVISED
-        boardState[row][col] = new Ant(boardState, getSizeRow(), getSizeCol(), getDayCounter());
+        boardState[row][col] = new Ant(boardState, getSizeRow(), getSizeCol(), day);
     }
     else
     {
         // MIGHT NEED TO BE REVISED
-        boardState[row][col] = new Doodlebug(getDayCounter(), col, row);
+        boardState[row][col] = new Doodlebug(day, col, row);
     }
 }
 
@@ -615,13 +626,17 @@ void Board::starveDoodlebugs()
             // Point tempCritter to the object at (row, col)
             getSquareState(&tempCritter, row, col);
 
-            if (tempCritter->getSpecies() == DB_ID)
+            // Check if square is empty
+            if (tempCritter != NULL)
             {
-                // check if eligible to starve
-                if (getDayCounter() - tempCritter->getLastAte() >= tempCritter->getStarvePeriod())
+                if (tempCritter->getSpecies() == DB_ID)
                 {
-                    delete tempCritter;
-                    boardState[row][col] = NULL;
+                    // check if eligible to starve
+                    if (getDayCounter() - tempCritter->getLastAte() >= tempCritter->getStarvePeriod())
+                    {
+                        delete tempCritter;
+                        boardState[row][col] = NULL;
+                    }
                 }
             }
         }
