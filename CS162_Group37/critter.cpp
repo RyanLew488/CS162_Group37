@@ -24,6 +24,7 @@ Critter::Critter(int day, int initSpecies,int initbreedingPeriod, int initSizeRo
 {
     setDayBirth(day);
     setSpecies(initSpecies);
+    setCritterChar(initSpecies);
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
 }

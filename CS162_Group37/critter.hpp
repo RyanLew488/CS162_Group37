@@ -36,6 +36,10 @@ private:
     int species;
     int breedingPeriod;
     char critterChar;
+    const Critter* const* const* pointerToBoardState;
+    int sizeRow;
+    int sizeCol;
+
 
 protected:
     // setters
@@ -47,7 +51,7 @@ protected:
 public:
 
     // constructor
-    Critter(int day, int initSpecies, int initbreedingPeriod);
+    Critter(int day, int initSpecies, int initbreedingPeriod, int initSizeRow, int initSizeCol, Critter*** pointerToBoardState);
 
     // ADDED DEFAULT CONSTRUCTOR SO THAT Doodlebug::Doodlebug() COMPILES
     Critter() {};
