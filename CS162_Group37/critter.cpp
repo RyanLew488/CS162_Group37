@@ -20,13 +20,17 @@ using std::endl;
 
 
 // constructor
-Critter::Critter(int day, int initSpecies,int initbreedingPeriod)
+Critter::Critter(int day, int initSpecies,int initbreedingPeriod, int initSizeRow, int initSizeCol, Critter*** pointerToBoardState)
 {
     setDayBirth(day);
     setSpecies(initSpecies);
-    setCritterChar(initSpecies);        // ADDED SO ALL CRITTERS WILL HAVE A CHAR TO PRINT
+    setCritterChar(initSpecies);
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
+    setDayLastMove(day);
+    setSizeRow(initSizeRow);
+    setSizeCol(initSizeCol);
+    setBoardStatePtr(pointerToBoardState);
 }
 
 // 'virtual' OUTSIDE CLASS DECLARATION.
@@ -49,6 +53,11 @@ int Critter::getDayLastBred()
     return dayLastBred;
 }
 
+int Critter::getDayLastMove()
+{
+    return dayLastMove;
+}
+
 int Critter::getBreedingPeriod()
 {
     return breedingPeriod;
@@ -59,11 +68,26 @@ char Critter::getCritterChar()
     return critterChar;
 }
 
+int Critter::getBoardSizeRows()
+{
+    return sizeRow;
+}
+
+int Critter::getBoardSizeCols()
+{
+    return sizeCol;
+}
+
 
 // setters
 void Critter::setDayLastBred(int newDayLastBred)
 {
     dayLastBred = newDayLastBred;
+}
+
+void Critter::setDayLastMove(int newDayLastMove)
+{
+    dayLastMove = newDayLastMove;
 }
 	
 void Critter::setSpecies(int initSpecies)
@@ -90,7 +114,6 @@ void Critter::setBreedingPeriod(int species)
     }
 }
 
-// ADDED "Critter::"
 void Critter::setCritterChar(int species)
 {
     // const int ANT_ID = 0;
@@ -104,6 +127,22 @@ void Critter::setCritterChar(int species)
         critterChar = char(88);
     }
 }
+
+void Critter::setSizeRow(int initSizeRow)
+{
+    sizeRow = initSizeRow;
+}
+
+void Critter::setSizeCol(int initSizeCol)
+{
+    sizeCol = initSizeCol;
+}
+
+void Critter::setBoardStatePtr(Critter*** initPointerToBoardState)
+{
+    pointerToBoardState = initPointerToBoardState;
+}
+
 
 void Critter::print()
 {
