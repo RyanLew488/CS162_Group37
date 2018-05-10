@@ -27,6 +27,7 @@ Critter::Critter(int day, int initSpecies,int initbreedingPeriod, int initSizeRo
     setCritterChar(initSpecies);
     setBreedingPeriod(initSpecies);
     setDayLastBred(day);
+    setDayLastMove(day);
     setSizeRow(initSizeRow);
     setSizeCol(initSizeCol);
     setBoardStatePtr(pointerToBoardState);
@@ -52,6 +53,11 @@ int Critter::getDayLastBred()
     return dayLastBred;
 }
 
+int Critter::getDayLastMove()
+{
+    return dayLastMove;
+}
+
 int Critter::getBreedingPeriod()
 {
     return breedingPeriod;
@@ -62,11 +68,26 @@ char Critter::getCritterChar()
     return critterChar;
 }
 
+int Critter::getBoardSizeRows()
+{
+    return sizeRow;
+}
+
+int Critter::getBoardSizeCols()
+{
+    return sizeCol;
+}
+
 
 // setters
 void Critter::setDayLastBred(int newDayLastBred)
 {
     dayLastBred = newDayLastBred;
+}
+
+void Critter::setDayLastMove(int newDayLastMove)
+{
+    dayLastMove = newDayLastMove;
 }
 	
 void Critter::setSpecies(int initSpecies)
@@ -117,7 +138,7 @@ void Critter::setSizeCol(int initSizeCol)
     sizeCol = initSizeCol;
 }
 
-void Critter::setBoardStatePtr(Critter*** initPointerToBoardState);
+void Critter::setBoardStatePtr(Critter*** initPointerToBoardState)
 {
     pointerToBoardState = initPointerToBoardState;
 }

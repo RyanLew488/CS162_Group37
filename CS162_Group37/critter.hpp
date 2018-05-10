@@ -33,10 +33,10 @@ private:
 
     int dayBirth;
     int dayLastBred;
+    int dayLastMove;
     int species;
     int breedingPeriod;
     char critterChar;
-    const Critter* const* const* pointerToBoardState;
     int sizeRow;
     int sizeCol;
 
@@ -50,6 +50,8 @@ protected:
     void setSizeRow(int sizeRow);
     void setSizeCol(int sizeCol);
     void setBoardStatePtr(Critter*** pointerToBoardState);
+
+    const Critter* const* const* pointerToBoardState;
 
 public:
 
@@ -66,11 +68,15 @@ public:
     int getDayBirth();
     int getSpecies();
     int getDayLastBred();
+    int getDayLastMove();
     int getBreedingPeriod();
     char getCritterChar();
+    int getBoardSizeRows();
+    int getBoardSizeCols();
 
 	// setters
     void setDayLastBred(int newDayLastBred);
+    void setDayLastMove(int newDayLastMove);
 
     // class methods
 
