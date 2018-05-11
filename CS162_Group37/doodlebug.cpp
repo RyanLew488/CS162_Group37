@@ -1,7 +1,7 @@
 #include "doodlebug.hpp"
 
 
-Doodlebug::Doodlebug() 
+Doodlebug::Doodlebug()
 {
 	/*
 	setDayBirth(0);
@@ -25,9 +25,10 @@ Doodlebug::Doodlebug(int day, int xPos, int yPos)
 {
 }
 
+//test comment
 void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int currentCol)
 {
-	if (currentDay - getDayLastBred() >= 8) 
+	if (currentDay - getDayLastBred() >= 8)
 	{
 		setDayLastBred() = currentDay;
 	}
@@ -45,7 +46,7 @@ int Doodlebug::getLastAte()
 
 
 void Doodlebug::move(int currentDay, int* passCoords, int currentRow, int currentCol)
-{ 
+{
 	setDayLastMove(currentDay);
 	int newRow = currentRow;
 	int newCol = currentCol;
@@ -94,7 +95,7 @@ void Doodlebug::move(int currentDay, int* passCoords, int currentRow, int curren
 			break;
 		}
 	}
-	
+
 	while (noAnt) //No ant was found, moving to random selection.
 	{
 		bool allDirectionsChecked = false;
@@ -119,6 +120,5 @@ void Doodlebug::move(int currentDay, int* passCoords, int currentRow, int curren
 			}
 		}
 	}
-	
-}
 
+}
