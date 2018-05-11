@@ -25,6 +25,12 @@ Doodlebug::Doodlebug(int day, int xPos, int yPos)
 {
 }
 
+Doodlebug::Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, int currentDay) : 
+								Critter (currentDay, 1, 8,boardSizeRow, boardSizeCol, boardState)
+{
+	setLastAte(currentDay);
+}
+
 //test comment
 void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int currentCol)
 {
