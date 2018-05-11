@@ -84,8 +84,8 @@ void Ant::breed(int currentDay, int* breedCoords, int currentRow, int currentCol
     while (!breedingSuccessful && !flagAllDirectionsChecked)
     {
         // Reset desired coords 
-        int breedRow = currentRow;
-        int breedCol = currentCol;
+        breedRow = currentRow;
+        breedCol = currentCol;
 
         // Generate a direction to move
         // 0 - up; 1 - right; 2 - down; 3 - left;
