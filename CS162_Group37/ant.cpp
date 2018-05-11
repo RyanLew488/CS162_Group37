@@ -66,8 +66,8 @@ void Ant::move(int currentDay, int* newCoords, int currentRow, int currentCol)
 
 void Ant::breed(int currentDay, int* breedCoords, int currentRow, int currentCol)
 {
-    int breedRow = currentRow;
-    int breedCol = currentCol;
+    int breedRow;
+    int breedCol;
 
     bool flagAllDirectionsChecked = 0;
     bool flagUpChecked = 0;
@@ -83,6 +83,10 @@ void Ant::breed(int currentDay, int* breedCoords, int currentRow, int currentCol
     // Loop until either a valid square is found or all direcitons have been checked
     while (!breedingSuccessful && !flagAllDirectionsChecked)
     {
+        // Reset desired coords 
+        breedRow = currentRow;
+        breedCol = currentCol;
+
         // Generate a direction to move
         // 0 - up; 1 - right; 2 - down; 3 - left;
         int direction = rand() % 4;
