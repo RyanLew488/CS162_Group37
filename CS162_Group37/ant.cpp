@@ -91,8 +91,6 @@ void Ant::breed(int currentDay, int* breedCoords, int currentRow, int currentCol
         // 0 - up; 1 - right; 2 - down; 3 - left;
         int direction = rand() % 4;
 
-
-        // BUG
         switch (direction)
         {
             case 0:
