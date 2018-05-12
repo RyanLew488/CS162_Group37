@@ -127,21 +127,21 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 				{
 				case 0:
 					northChecked = true;
-					if (pointerToBoardState[currentCol - 1][currentRow] == nullptr)
+					if (pointerToBoardState[currentCol - 1][currentRow] == nullptr && (currentCol - 1) >= 0)
 					{
 						newCol = currentCol - 1;
 					}
 					break;
 				case 1:
 					eastChecked = true;
-					if (pointerToBoardState[currentCol][currentRow + 1] == nullptr)
+					if (pointerToBoardState[currentCol][currentRow + 1] == nullptr && (currentRow + 1) <= getBoardSizeRows())
 					{
 						newRow = currentRow + 1;
 					}
 					break;
 				case 2:
 					southChecked = true;
-					if (pointerToBoardState[currentCol + 1][currentRow] == nullptr)
+					if (pointerToBoardState[currentCol + 1][currentRow] == nullptr && (currentCol + 1) <= getBoardSizeCols())
 					{
 						newCol = currentCol + 1;
 					}
@@ -149,7 +149,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 					break;
 				case 3:
 					westChecked = true;
-					if (pointerToBoardState[currentCol][currentRow - 1] == nullptr)
+					if (pointerToBoardState[currentCol][currentRow - 1] == nullptr && (currentRow - 1) >= 0)
 					{
 						newRow = currentRow - 1;
 					}
