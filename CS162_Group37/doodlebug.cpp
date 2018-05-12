@@ -30,7 +30,7 @@ Doodlebug::Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, 
 {
 	setLastAte(currentDay);
 	setDayLastBred(currentDay);
-	starvePeriod = 8;
+	starvePeriod = 3;
 }
 
 //test comment
