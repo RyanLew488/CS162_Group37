@@ -55,7 +55,7 @@ private:
 public:
 	Doodlebug(){};
 	Doodlebug(int day, int xPos, int yPos);
-	Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, int currentDay) : Critter(currentDay, 1, 8, boardSizeRow, boardSizeCol, boardState);
+	Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, int currentDay);
 	void move(int currentDay, int* newCoords, int currentRow, int currentCol);
 	void breed(int currentDay, int* newCoords, int currentRow, int currentCol);
 	void setLastAte(int lastAte);
