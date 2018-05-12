@@ -64,39 +64,51 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 		switch (i)
 		{
 		case 0:
-			if (pointerToBoardState[currentRow - 1][currentCol]->getSpecies() == 0)
+			if (pointerToBoardState[currentRow - 1][currentCol] != NULL)
 			{
-				newRow = currentRow - 1;
-				noAnt = false;
-				setLastAte(currentDay);
-				i = 4; //exit for loop
+				if (pointerToBoardState[currentRow - 1][currentCol]->getSpecies() == 0)
+				{
+					newRow = currentRow - 1;
+					noAnt = false;
+					setLastAte(currentDay);
+					i = 4; //exit for loop
+				}
 			}
 			break;
 		case 1:
-			if (pointerToBoardState[currentRow][currentCol + 1]->getSpecies() == 0)
+			if (pointerToBoardState[currentRow][currentCol + 1] != NULL)
 			{
-				newCol = currentCol + 1;
-				noAnt = false;
-				setLastAte(currentDay);
-				i = 4; //exit for loop
+				if (pointerToBoardState[currentRow][currentCol + 1]->getSpecies() == 0)
+				{
+					newCol = currentCol + 1;
+					noAnt = false;
+					setLastAte(currentDay);
+					i = 4; //exit for loop
+				}
 			}
 			break;
 		case 2:
-			if (pointerToBoardState[currentRow + 1][currentCol]->getSpecies() == 0)
+			if (pointerToBoardState[currentRow + 1][currentCol] != NULL)
 			{
-				newRow = currentCol + 1;
-				noAnt = false;
-				setLastAte(currentDay);
-				i = 4; //exit for loop
+				if (pointerToBoardState[currentRow + 1][currentCol]->getSpecies() == 0)
+				{
+					newRow = currentCol + 1;
+					noAnt = false;
+					setLastAte(currentDay);
+					i = 4; //exit for loop
+				}
 			}
 			break;
 		case 3:
-			if (pointerToBoardState[currentRow][currentCol - 1]->getSpecies() == 0)
+			if (pointerToBoardState[currentRow][currentCol - 1] != NULL)
 			{
-				newCol = currentCol - 1;
-				noAnt = false;
-				setLastAte(currentDay);
-				i = 4; //exit for loop
+				if (pointerToBoardState[currentRow][currentCol - 1]->getSpecies() == 0)
+				{
+					newCol = currentCol - 1;
+					noAnt = false;
+					setLastAte(currentDay);
+					i = 4; //exit for loop
+				}
 			}
 			break;
 		}
@@ -139,7 +151,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 					westChecked = true;
 					if (pointerToBoardState[currentCol][currentRow - 1] == nullptr)
 					{
-						newRow = currentCol = 1;
+						newRow = currentRow - 1;
 					}
 					break;
 				}
