@@ -43,7 +43,7 @@ int Critter::getDayBirth()
     return dayBirth;
 }
 
-int Critter::getSpecies()
+int Critter::getSpecies() const
 {
     return species;
 }

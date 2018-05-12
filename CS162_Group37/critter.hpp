@@ -66,7 +66,7 @@ public:
 
     // getters
     int getDayBirth();
-    int getSpecies();
+    int getSpecies() const;
     int getDayLastBred();
     int getDayLastMove();
     int getBreedingPeriod();
