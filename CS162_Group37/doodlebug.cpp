@@ -64,7 +64,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 		switch (i)
 		{
 		case 0:
-			if (pointerToBoardState[currentRow -1][currentCol]->getSpecies() == 0)
+			if (pointerToBoardState[currentRow - 1][currentCol]->getSpecies() == 0)
 			{
 				newRow = currentRow - 1;
 				noAnt = false;
@@ -105,51 +105,52 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 		bool southChecked = false;
 		bool westChecked = false;
 
-	while (noAnt) //No ant was found, moving to random selection.
-	{
-		bool allDirectionsChecked = false;
-		while (!allDirectionsChecked)
+		while (noAnt) //No ant was found, moving to random selection.
 		{
-			int direction = rand() % 4;
-			switch (direction)
+			bool allDirectionsChecked = false;
+			while (!allDirectionsChecked)
 			{
-			case 0:
-				northChecked = true;
-				if (pointerToBoardState[currentCol - 1][currentRow] == nullptr)
+				int direction = rand() % 4;
+				switch (direction)
 				{
-					newCol = currentCol - 1;
+				case 0:
+					northChecked = true;
+					if (pointerToBoardState[currentCol - 1][currentRow] == nullptr)
+					{
+						newCol = currentCol - 1;
+					}
+					break;
+				case 1:
+					eastChecked = true;
+					if (pointerToBoardState[currentCol][currentRow + 1] == nullptr)
+					{
+						newRow = currentRow + 1;
+					}
+					break;
+				case 2:
+					southChecked = true;
+					if (pointerToBoardState[currentCol + 1][currentRow] == nullptr)
+					{
+						newCol = currentCol + 1;
+					}
+
+					break;
+				case 3:
+					westChecked = true;
+					if (pointerToBoardState[currentCol][currentRow - 1] == nullptr)
+					{
+						newRow = currentCol = 1;
+					}
+					break;
 				}
-				break;
-			case 1:
-				eastChecked = true;
-				if (pointerToBoardState[currentCol][currentRow + 1] == nullptr)
+				if (northChecked && eastChecked && southChecked && westChecked)
 				{
-					newRow = currentRow + 1;
+					allDirectionsChecked = true;
 				}
-				break;
-			case 2:
-				southChecked = true;
-				if (pointerToBoardState[currentCol + 1][currentRow] == nullptr)
-				{
-					newCol = currentCol + 1;
-				}
-				
-				break;
-			case 3:
-				westChecked = true;
-				if (pointerToBoardState[currentCol][currentRow - 1] == nullptr)
-				{
-					newRow = currentCol = 1;
-				}
-				break;
 			}
-			if (northChecked && eastChecked && southChecked && westChecked)
-			{
-				allDirectionsChecked = true;
-			}
+			noAnt = false;
 		}
-		noAnt = false;
+		newCoords[0] = newRow;
+		newCoords[1] = newCol;
 	}
-	newCoords[0] = newRow;
-	newCoords[1] = newCol;
 }
