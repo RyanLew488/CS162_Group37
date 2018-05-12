@@ -605,7 +605,7 @@ void Board::addCritter(int speciesID, int row, int col)
     else
     {
         // MIGHT NEED TO BE REVISED
-        boardState[row][col] = new Doodlebug(day, col, row);
+        boardState[row][col] = new Doodlebug(boardState, getSizeRow(), getSizeCol(), day);
     }
 }
 
