@@ -53,7 +53,7 @@ private:
 	}
 
 public:
-	Doodlebug(){};
+	Doodlebug();
 	Doodlebug(int day, int xPos, int yPos);
 	Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, int currentDay);
 	void move(int currentDay, int* newCoords, int currentRow, int currentCol);

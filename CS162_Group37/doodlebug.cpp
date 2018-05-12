@@ -36,7 +36,7 @@ void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int curr
 {
 	if (currentDay - getDayLastBred() >= 8)
 	{
-		setDayLastBred() = currentDay;
+		setDayLastBred(currentDay);
 	}
 }
 
