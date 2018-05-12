@@ -68,7 +68,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newRow = currentRow - 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
@@ -77,7 +77,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newCol = currentCol + 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
@@ -86,7 +86,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newRow = currentCol + 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
@@ -95,7 +95,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newCol = currentCol - 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
