@@ -64,11 +64,11 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 		switch (i)
 		{
 		case 0:
-			if (pointerToBoardState[currentRow -1][currentCol]->getSpecies() == 0);
+			if (pointerToBoardState[currentRow - 1][currentCol]->getSpecies() == 0);
 			{
 				newRow = currentRow - 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
@@ -77,7 +77,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newCol = currentCol + 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
@@ -86,7 +86,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newRow = currentCol + 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
@@ -95,15 +95,17 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				newCol = currentCol - 1;
 				noAnt = false;
-				setLastAte = currentDay;
+				setLastAte(currentDay);
 				i = 4; //exit for loop
 			}
 			break;
 		}
-		bool northChecked = false;
-		bool eastChecked = false;
-		bool southChecked = false;
-		bool westChecked = false;
+	}
+
+	bool northChecked = false;
+	bool eastChecked = false;
+	bool southChecked = false;
+	bool westChecked = false;
 
 	while (noAnt) //No ant was found, moving to random selection.
 	{
