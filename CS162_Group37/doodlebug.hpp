@@ -5,6 +5,7 @@ class Doodlebug : public Critter
 {
 private:
 	int lastAte;
+	int starvePeriod;
 
 	// ADDED THESE BECAUSE THEY WERE REMOVED FROM CRITTER
 	// WRITTEN IN TERMS OF ROW/COL WHERE POSSIBLE TO MINIMIZE CONFUSION
@@ -59,5 +60,6 @@ public:
 	void move(int currentDay, int* newCoords, int currentRow, int currentCol);
 	void breed(int currentDay, int* newCoords, int currentRow, int currentCol);
 	void setLastAte(int lastAte);
+	int getStarvePeriod();
 	int getLastAte();
 };

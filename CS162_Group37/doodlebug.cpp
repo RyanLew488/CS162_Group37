@@ -29,6 +29,8 @@ Doodlebug::Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, 
 								Critter (currentDay, 1, 8,boardSizeRow, boardSizeCol, boardState)
 {
 	setLastAte(currentDay);
+	setDayLastBred(currentDay);
+	starvePeriod = 8;
 }
 
 //test comment
@@ -45,11 +47,15 @@ void Doodlebug::setLastAte(int lastAte)
 	this->lastAte = lastAte;
 }
 
+int Doodlebug::getStarvePeriod()
+{
+	return starvePeriod;
+}
+
 int Doodlebug::getLastAte()
 {
 	return lastAte;
 }
-
 
 void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int currentCol)
 { 
@@ -64,7 +70,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 		switch (i)
 		{
 		case 0:
-			if (pointerToBoardState[currentRow - 1][currentCol] != NULL)
+			if ((currentRow - 1) >= 0 && pointerToBoardState[currentRow - 1][currentCol] != NULL)
 			{
 				if (pointerToBoardState[currentRow - 1][currentCol]->getSpecies() == 0)
 				{
@@ -76,7 +82,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			}
 			break;
 		case 1:
-			if (pointerToBoardState[currentRow][currentCol + 1] != NULL)
+			if ((currentCol + 1) <= getBoardSizeCols() &&pointerToBoardState[currentRow][currentCol + 1] != NULL)
 			{
 				if (pointerToBoardState[currentRow][currentCol + 1]->getSpecies() == 0)
 				{
@@ -88,7 +94,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			}
 			break;
 		case 2:
-			if (pointerToBoardState[currentRow + 1][currentCol] != NULL)
+			if ((currentRow + 1) <= getBoardSizeRows() && pointerToBoardState[currentRow + 1][currentCol] != NULL)
 			{
 				if (pointerToBoardState[currentRow + 1][currentCol]->getSpecies() == 0)
 				{
@@ -100,7 +106,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			}
 			break;
 		case 3:
-			if (pointerToBoardState[currentRow][currentCol - 1] != NULL)
+			if ((currentCol - 1) >= 0 && pointerToBoardState[currentRow][currentCol - 1] != NULL)
 			{
 				if (pointerToBoardState[currentRow][currentCol - 1]->getSpecies() == 0)
 				{
@@ -127,21 +133,21 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 				{
 				case 0:
 					northChecked = true;
-					if (pointerToBoardState[currentCol - 1][currentRow] == nullptr && (currentCol - 1) >= 0)
+					if ((currentCol - 1) >= 0 && pointerToBoardState[currentCol - 1][currentRow] == nullptr)
 					{
 						newCol = currentCol - 1;
 					}
 					break;
 				case 1:
 					eastChecked = true;
-					if (pointerToBoardState[currentCol][currentRow + 1] == nullptr && (currentRow + 1) <= getBoardSizeRows())
+					if ((currentRow + 1) <= getBoardSizeRows() && pointerToBoardState[currentCol][currentRow + 1] == nullptr )
 					{
 						newRow = currentRow + 1;
 					}
 					break;
 				case 2:
 					southChecked = true;
-					if (pointerToBoardState[currentCol + 1][currentRow] == nullptr && (currentCol + 1) <= getBoardSizeCols())
+					if ((currentCol + 1) <= getBoardSizeCols() &&pointerToBoardState[currentCol + 1][currentRow] == nullptr )
 					{
 						newCol = currentCol + 1;
 					}
@@ -149,7 +155,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 					break;
 				case 3:
 					westChecked = true;
-					if (pointerToBoardState[currentCol][currentRow - 1] == nullptr && (currentRow - 1) >= 0)
+					if ((currentRow - 1) >= 0 && pointerToBoardState[currentCol][currentRow - 1] == nullptr )
 					{
 						newRow = currentRow - 1;
 					}
