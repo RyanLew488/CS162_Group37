@@ -165,7 +165,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 					westChecked = true;
 					if ((currentCol - 1) >= 0 && pointerToBoardState[currentRow][currentCol - 1] == nullptr )
 					{
-						newRow = currentRow - 1;
+						newCol = currentCol - 1;
 						noAnt = false;
 						allDirectionsChecked = true;
 					}
