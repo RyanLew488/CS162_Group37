@@ -62,4 +62,5 @@ public:
 	void setLastAte(int lastAte);
 	int getStarvePeriod();
 	int getLastAte();
+	int getSquareState(const Critter ** critterHolder, int inRow, int inCol);
 };

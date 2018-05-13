@@ -89,7 +89,7 @@ public:
     // ADDED BY DAVID TO ALLOW COMPILATION.  TO BE FILLED OUT W/ DETAILS LATER.
     // virtual functions defined in the derived classes of Doodlebug
     virtual int getLastAte(){};
-    virtual int getStarvePeriod(){};
+    virtual int getPeriod(){};
 	
 };
 #endif

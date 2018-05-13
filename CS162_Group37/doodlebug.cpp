@@ -36,9 +36,65 @@ Doodlebug::Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, 
 //test comment
 void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int currentCol)
 {
-	if (currentDay - getDayLastBred() >= 8)
+	int breedRow;
+	int breedCol;
+	bool checkUp = 0;
+	bool checkRight = 0;
+	bool checkDown = 0;
+	bool checkLeft = 0;
+	bool checkedAllDirections = 0;
+	bool breedingSuccessful = 0;
+	int flagSquareIsInBounds;
+	
+	const Critter *tempCritter;
+
+	while (!breedingSuccessful && !checkedAllDirections)
+	{
+
+		breedRow = currentRow;
+		breedCol = currentCol;
+		int direction = rand() % 4;
+		switch (direction)
+		{
+		case 0:
+			checkUp = 1;
+			breedRow = currentRow - 1;
+			break;
+		case 1:
+			checkRight = 1;
+			breedCol = currentCol + 1;
+			break;
+		case 2:
+			checkDown = 1;
+			breedRow = currentRow + 1;
+			break;
+		case 3:
+			checkLeft = 1;
+			breedCol = currentCol - 1;
+			break;
+		}
+
+
+		flagSquareIsInBounds = getSquareState(&tempCritter, breedRow, breedCol);
+		
+		if (flagSquareIsInBounds && tempCritter == NULL)
+		{
+			breedingSuccessful = 1;
+		}
+		checkedAllDirections = checkUp && checkRight && checkDown && checkLeft;
+	}
+	
+
+	if (breedingSuccessful)
 	{
 		setDayLastBred(currentDay);
+		passCoords[0] = breedRow;
+		passCoords[1] = breedCol;
+	}
+	else
+	{
+		passCoords[0] = currentRow;
+		passCoords[1] = currentCol;
 	}
 }
 
@@ -184,4 +240,26 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 	}
 	newCoords[0] = newRow;
 	newCoords[1] = newCol;	
+}
+
+int Doodlebug::getSquareState(const Critter** critterHolder, int inRow, int inCol)
+{
+	// If coords valid (inside board)
+	bool rowValid = (inRow >= 0) && (inRow < getBoardSizeRows());
+	bool colValid = (inCol >= 0) && (inCol < getBoardSizeCols());
+
+	if (rowValid && colValid)
+	{
+		// Pass along the address to the Critter at (inRow, inCol)
+		*critterHolder = pointerToBoardState[inRow][inCol];
+
+		// Communicate that coords were valid
+		return 1;
+	}
+	else
+	{
+		// Communicate that coords were invalid
+		// (outside of board bounds)
+		return 0;
+	}
 }
