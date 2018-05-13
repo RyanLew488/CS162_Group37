@@ -33,10 +33,6 @@ Critter::Critter(int day, int initSpecies,int initbreedingPeriod, int initSizeRo
     setBoardStatePtr(pointerToBoardState);
 }
 
-// 'virtual' OUTSIDE CLASS DECLARATION.
-// destructor
-// virtual Critter::~Critter() {}
-
 // getters
 int Critter::getDayBirth()
 {
