@@ -206,7 +206,7 @@ void Board::runNormalGame()
         breedCritters(DB_ID);
         starveDoodlebugs();
 
-        std::cout << "*****Board state at end of day " << getDayCounter()
+        std::cout << "\n*****Board state at end of day " << getDayCounter()
             << "*****" << std::endl;
         printBoard();
 
