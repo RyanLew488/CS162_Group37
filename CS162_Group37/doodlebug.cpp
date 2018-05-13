@@ -98,7 +98,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			{
 				if (pointerToBoardState[currentRow + 1][currentCol]->getSpecies() == 0)
 				{
-					newRow = currentCol + 1;
+					newRow = currentRow + 1;
 					noAnt = false;
 					setLastAte(currentDay);
 					i = 4; //exit for loop
@@ -153,7 +153,7 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 
 				case 2:
 					southChecked = true;
-					if ((currentRow + 1) < getBoardSizeCols() &&pointerToBoardState[currentRow + 1][currentCol] == nullptr )
+					if ((currentRow + 1) < getBoardSizeCols() && pointerToBoardState[currentRow + 1][currentCol] == nullptr )
 					{
 						newRow = currentRow + 1;
 						noAnt = false;
