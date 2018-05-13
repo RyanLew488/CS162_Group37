@@ -12,9 +12,6 @@
 #include <iostream>
 #include <string>
 
-// CREATES AN ERROR BECAUSE IT CAUSES A LOOP IN COMPILATION
-// board.hpp #includes critter.hpp which #includes board.hpp....
-// #include "board.hpp"
 
 // Declare specific using statements to avoid namespace pollution
 
@@ -55,11 +52,11 @@ protected:
 
 public:
 
+    // default constructor
+    Critter() {};
+
     // constructor
     Critter(int day, int initSpecies, int initbreedingPeriod, int initSizeRow, int initSizeCol, Critter*** pointerToBoardState);
-
-    // ADDED DEFAULT CONSTRUCTOR SO THAT Doodlebug::Doodlebug() COMPILES
-    Critter() {};
 
     // destructor
     virtual ~Critter() {};
@@ -74,19 +71,21 @@ public:
     int getBoardSizeRows();
     int getBoardSizeCols();
 
-	// setters
+
+    // setters
     void setDayLastBred(int newDayLastBred);
     void setDayLastMove(int newDayLastMove);
 
-    // class methods
+    /**********************************************************
+    / class methods
+    **********************************************************/
 
     void print();
 
-    // virtual functions defined in the derived classes of Ant and Doodlebug
+    // pure virtual functions defined in the derived classes of Ant and Doodlebug
     virtual void move(int currentDay, int* newCoords, int currentRow, int currentCol) = 0;
-    virtual void breed(int, int*, int, int) = 0;
+    virtual void breed(int currentDay, int * passCoords, int currentRow, int currentCol) = 0;
 
-    // ADDED BY DAVID TO ALLOW COMPILATION.  TO BE FILLED OUT W/ DETAILS LATER.
     // virtual functions defined in the derived classes of Doodlebug
     virtual int getLastAte(){};
     virtual int getStarvePeriod(){};
