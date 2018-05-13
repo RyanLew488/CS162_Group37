@@ -177,69 +177,48 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 	}
 
 
-	bool northChecked = false;
-	bool eastChecked = false;
-	bool southChecked = false;
-	bool westChecked = false;
+ //No ant was found, moving to random selection.
+    // setDayLastMove(currentDay);
 
-	while (noAnt) //No ant was found, moving to random selection.
-	{
-		bool allDirectionsChecked = false;
-		while (!allDirectionsChecked)
-		{
-			int direction = rand() % 4;
-			switch (direction)
-			{
-			case 0:
-				northChecked = true;
-				if ((currentRow - 1) >= 0 && pointerToBoardState[currentRow - 1][currentCol] == nullptr)
-				{
-					newRow = currentRow - 1;
-					noAnt = false;
-					allDirectionsChecked = true;
-				}
-				break;
+    // int newRow = currentRow;
+    // int newCol = currentCol;
 
-			case 1:
-				eastChecked = true;
-				if ((currentCol + 1) < getBoardSizeRows() && pointerToBoardState[currentRow][currentCol + 1] == nullptr )
-				{
-					newCol = currentCol + 1;
-					noAnt = false;
-					allDirectionsChecked = true;
-				}
-				break;
+    // Generate a direction to move
+    // 0 - up; 1 - right; 2 - down; 3 - left;
+    int direction = rand() % 4;
 
-			case 2:
-				southChecked = true;
-				if ((currentRow + 1) < getBoardSizeCols() && pointerToBoardState[currentRow + 1][currentCol] == nullptr )
-				{
-					newRow = currentRow + 1;
-					noAnt = false;
-					allDirectionsChecked = true;
-				}
-				break;
+    switch (direction)
+    {
+        case 0:
+            newRow = currentRow - 1;
+            break;
+        case 1:
+            newCol = currentCol + 1;
+            break;
+        case 2:
+            newRow = currentRow + 1;
+            break;
+        case 3:
+            newCol = currentCol - 1;
+            break;
+    }
 
-			case 3:
-				westChecked = true;
-				if ((currentCol - 1) >= 0 && pointerToBoardState[currentRow][currentCol - 1] == nullptr )
-				{
-					newCol = currentCol - 1;
-					noAnt = false;
-					allDirectionsChecked = true;
-				}
-				break;
-			}
+    const Critter* tempCritter;
 
-			if (northChecked && eastChecked && southChecked && westChecked)
-			{
-				allDirectionsChecked = true;
-			}
-		}
-		noAnt = false;
-	}
-	newCoords[0] = newRow;
-	newCoords[1] = newCol;	
+    int flagValidSquare = getSquareState(&tempCritter, newRow, newCol);
+
+    // If square is out of bounds or occupied, then don't move
+    if (!flagValidSquare || tempCritter != NULL)
+    {
+        newRow = currentRow;
+        newCol = currentCol;
+    }
+
+    // Tell board where Ant wants to move (or not move)
+    newCoords[0] = newRow;
+    newCoords[1] = newCol;
+
+
 }
 
 int Doodlebug::getSquareState(const Critter** critterHolder, int inRow, int inCol)
