@@ -22,14 +22,6 @@ class Board
 private:
     // Data members
 
-    // Constants use in game logic
-
-    // MOVE THESE CRITTER SPECIFIC PROPERTIES TO CRITTER/ANT/DB CLASS
-    // WITH GET FUNCTION
-    // const int ANT_BREEDING_PERIOD = 3;
-    // const int DB_BREEDING_PERIOD = 8;
-    // const int DB_STARVE_PERIOD = 3;
-
     // Limits for board size
     const int MAX_ROW = 80;
     const int MAX_COL = 80;
@@ -101,7 +93,7 @@ private:
     {
         setDayCounter(getDayCounter() + 1);
     }
-    void moveCritters(int); //moves ants or dbs based on int parameter
+    void moveCritters(int);     //moves ants or dbs based on int parameter
     void breedCritters(int);    // breeds ants/dbs based on int parameter
     void starveDoodlebugs();
 
@@ -148,7 +140,6 @@ public:
     // Method for running the prey-predator game
     // All game logic and control contained inside runGame()
     void runGame();
-
 };
 
 #endif
