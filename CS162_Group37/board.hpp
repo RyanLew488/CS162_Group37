@@ -40,7 +40,7 @@ private:
     // const char CHAR_EMPTY = ' ';
 
     // TESTING
-    const char CHAR_EMPTY = '~';
+    const char CHAR_EMPTY = ' ';
 
     // ******NEEDS TO BE DEFINED BY TEAM*********
     // Needs to match what is returned by int Critter::getSpecies()
