@@ -1,3 +1,7 @@
+/*******************************************************************************
+** Doodlebug Class
+**     Header file for the Doodlebug Class contains some setter and getter functions
+******************************************************************************/
 #pragma once
 #include "critter.hpp"
 
@@ -6,10 +10,6 @@ class Doodlebug : public Critter
 private:
 	int lastAte;
 	int starvePeriod;
-
-	// ADDED THESE BECAUSE THEY WERE REMOVED FROM CRITTER
-	// WRITTEN IN TERMS OF ROW/COL WHERE POSSIBLE TO MINIMIZE CONFUSION
-
 	int colPos;
 	int rowPos;
 
@@ -54,8 +54,6 @@ private:
 	}
 
 public:
-	Doodlebug();
-	Doodlebug(int day, int xPos, int yPos);
 	Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, int currentDay);
 	void move(int currentDay, int* newCoords, int currentRow, int currentCol);
 	void breed(int currentDay, int* newCoords, int currentRow, int currentCol);

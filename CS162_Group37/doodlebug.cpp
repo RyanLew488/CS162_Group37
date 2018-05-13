@@ -1,29 +1,9 @@
+/*******************************************************************************
+** Doodlebug Class
+**     This is the implementation file for the Doodlebug class and contains all the
+**     member variables and member functions for ant.
+******************************************************************************/
 #include "doodlebug.hpp"
-
-
-Doodlebug::Doodlebug()
-{
-	/*
-	setDayBirth(0);
-	setSpecies(1);
-	setXPos(0);
-	setYPos(0);
-	setBreedingPeriod(8);
-	setDayLastBred(0);
-	*/
-
-}
-
-// COMMENTED OUT FOR COMPILATION, NO MATCHING PROTOTYPE IN HPP
-// Doodlebug::Doodlebug(int xPos, int yPos, bool ate, bool breedable)
-// {
-
-// }
-// ADDED SO THAT BOARD CAN FIND/USE CONSTRUCTOR
-// NEEDS TO BE COMPLETED
-Doodlebug::Doodlebug(int day, int xPos, int yPos)
-{
-}
 
 Doodlebug::Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, int currentDay) : 
 								Critter (currentDay, 1, 8,boardSizeRow, boardSizeCol, boardState)
@@ -33,7 +13,9 @@ Doodlebug::Doodlebug(Critter*** boardState, int boardSizeRow, int boardSizeCol, 
 	starvePeriod = 3;
 }
 
-//test comment
+/**************************************************************************************************
+** Breed checks if there is a valid space for the Doodlebug to breed to, if not it does not breed
+***************************************************************************************************/
 void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int currentCol)
 {
 	int breedRow;
@@ -50,7 +32,6 @@ void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int curr
 
 	while (!breedingSuccessful && !checkedAllDirections)
 	{
-
 		breedRow = currentRow;
 		breedCol = currentCol;
 		int direction = rand() % 4;
@@ -74,7 +55,6 @@ void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int curr
 			break;
 		}
 
-
 		flagSquareIsInBounds = getSquareState(&tempCritter, breedRow, breedCol);
 		
 		if (flagSquareIsInBounds && tempCritter == NULL)
@@ -84,7 +64,6 @@ void Doodlebug::breed(int currentDay, int * passCoords, int currentRow, int curr
 		checkedAllDirections = checkUp && checkRight && checkDown && checkLeft;
 	}
 	
-
 	if (breedingSuccessful)
 	{
 		setDayLastBred(currentDay);
@@ -113,6 +92,10 @@ int Doodlebug::getLastAte()
 	return lastAte;
 }
 
+/**************************************************************************************************
+** Move checks the 4 adjacent spaces around the Doodlebug for an ant and moves to that square if
+** there is an ant. If there is no ant it moves in a random direction.
+***************************************************************************************************/
 void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int currentCol)
 { 
 	setDayLastMove(currentDay);
@@ -120,12 +103,11 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 	int newCol = currentCol;
 	bool noAnt = true;
 
-
 	for (int i = 0; i < 4; i++) //find ant;
 	{
 		switch (i)
 		{
-		case 0:
+		case 0: //North
 			if ((currentRow - 1) >= 0 && pointerToBoardState[currentRow - 1][currentCol] != NULL)
 			{
 				if (pointerToBoardState[currentRow - 1][currentCol]->getSpecies() == 0)
@@ -137,7 +119,8 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 				}
 			}
 			break;
-		case 1:
+
+		case 1: //East
 			if ((currentCol + 1) < getBoardSizeCols() && pointerToBoardState[currentRow][currentCol + 1] != NULL)
 			{
 				if (pointerToBoardState[currentRow][currentCol + 1]->getSpecies() == 0)
@@ -149,7 +132,8 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 				}
 			}
 			break;
-		case 2:
+
+		case 2: //West
 			if ((currentRow + 1) < getBoardSizeRows() && pointerToBoardState[currentRow + 1][currentCol] != NULL)
 			{
 				if (pointerToBoardState[currentRow + 1][currentCol]->getSpecies() == 0)
@@ -161,7 +145,8 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 				}
 			}
 			break;
-		case 3:
+
+		case 3: //South
 			if ((currentCol - 1) >= 0 && pointerToBoardState[currentRow][currentCol - 1] != NULL)
 			{
 				if (pointerToBoardState[currentRow][currentCol - 1]->getSpecies() == 0)
@@ -176,17 +161,10 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 		}
 	}
 
-
  	//No ant was found, moving to random selection.
-
 	if (noAnt)
 	{
-		// setDayLastMove(currentDay);
 
-		// int newRow = currentRow;
-		// int newCol = currentCol;
-
-		// Generate a direction to move
 		// 0 - up; 1 - right; 2 - down; 3 - left;
 		int direction = rand() % 4;
 
@@ -217,11 +195,9 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 			newCol = currentCol;
 		}
 	}
-
-    // Tell board where Ant wants to move (or not move)
+    // Tell board where Doodlebug wants to move (or not move)
     newCoords[0] = newRow;
     newCoords[1] = newCol;
-
 }
 
 int Doodlebug::getSquareState(const Critter** critterHolder, int inRow, int inCol)
