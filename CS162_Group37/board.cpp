@@ -179,7 +179,7 @@ void Board::newGame()
 void Board::extendedGame()
 {
     int numMoreDays;
-    int upLimit = MAX_DAYS - getDayCounter();
+    int upLimit = MAX_DAYS - getDayCounter() + 1;
 
     // #days
     do
