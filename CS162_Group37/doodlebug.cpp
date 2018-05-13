@@ -177,47 +177,50 @@ void Doodlebug::move(int currentDay, int* newCoords, int currentRow, int current
 	}
 
 
- //No ant was found, moving to random selection.
-    // setDayLastMove(currentDay);
+ 	//No ant was found, moving to random selection.
 
-    // int newRow = currentRow;
-    // int newCol = currentCol;
+	if (noAnt)
+	{
+		// setDayLastMove(currentDay);
 
-    // Generate a direction to move
-    // 0 - up; 1 - right; 2 - down; 3 - left;
-    int direction = rand() % 4;
+		// int newRow = currentRow;
+		// int newCol = currentCol;
 
-    switch (direction)
-    {
-        case 0:
-            newRow = currentRow - 1;
-            break;
-        case 1:
-            newCol = currentCol + 1;
-            break;
-        case 2:
-            newRow = currentRow + 1;
-            break;
-        case 3:
-            newCol = currentCol - 1;
-            break;
-    }
+		// Generate a direction to move
+		// 0 - up; 1 - right; 2 - down; 3 - left;
+		int direction = rand() % 4;
 
-    const Critter* tempCritter;
+		switch (direction)
+		{
+			case 0:
+				newRow = currentRow - 1;
+				break;
+			case 1:
+				newCol = currentCol + 1;
+				break;
+			case 2:
+				newRow = currentRow + 1;
+				break;
+			case 3:
+				newCol = currentCol - 1;
+				break;
+		}
 
-    int flagValidSquare = getSquareState(&tempCritter, newRow, newCol);
+		const Critter* tempCritter;
 
-    // If square is out of bounds or occupied, then don't move
-    if (!flagValidSquare || tempCritter != NULL)
-    {
-        newRow = currentRow;
-        newCol = currentCol;
-    }
+		int flagValidSquare = getSquareState(&tempCritter, newRow, newCol);
+
+		// If square is out of bounds or occupied, then don't move
+		if (!flagValidSquare || tempCritter != NULL)
+		{
+			newRow = currentRow;
+			newCol = currentCol;
+		}
+	}
 
     // Tell board where Ant wants to move (or not move)
     newCoords[0] = newRow;
     newCoords[1] = newCol;
-
 
 }
 
